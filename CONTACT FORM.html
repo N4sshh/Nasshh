@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Form</title>
+  <style>
+
+*
+{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body
+{
+  font-family: Arial,sans-serif;
+  background: linear-gradient(#ffdad5, #fff7f9);
+}
+
+.Contact-Container
+{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.Contact-left
+{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 20px;
+}
+
+.Contact-left-title h2
+{
+  font-weight: 600;
+  color: #a363aa;
+  font-size: 40px;
+  margin-bottom: 5px;
+}
+
+.Contact-left-title hr
+{
+  border: none;
+  width: 120px;
+  height: 5px;
+  background-color:#a363aa;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.Contact-inputs
+{
+  width: 400px;
+  height: 50px;
+  border: none;
+  outline: none;
+  padding-left: 25px;
+  font-weight: 500;
+  color: #a363aa;
+  border-radius: 50px;
+}
+
+.Contact-left textarea
+{
+  height: 140px;
+  padding-top: 15px;
+  border-radius: 20px;
+}
+
+.Contact-inputs:focus
+{
+  border: 2px solid royalblue;
+}
+
+.Contact-inputs::placeholder
+{
+  color:#a9a9a9;
+}
+
+.Contact-left button
+{
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+  font-size: 16px;
+  color: #fff;
+  gap: 10px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(270deg,royalblue,#ff994f);
+  cursor: pointer;
+}
+.Contact-left button img
+{
+  height: 15px;
+}
+
+.contact-right img
+{
+  width: 500px;
+}
+
+@media (max-width:800px)
+{
+  
+  .Contact-inputs
+  {
+    width: 80vw;
+  }
+  
+  .contact-right
+  {
+    display: none;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="Contact-Container">
+    <form action="https://api.web3forms.com/submit" method="POST" method="post" class="Contact-left">
+      <div class="Contact-left-title">
+        <h2>Get In Touch</h2>
+        <hr>
+      </div>
+      <input type="hidden" name="access_key" value="975d8824-2953-422b-9188-a10ed30ca12e">
+      <input type="text" name="name" placeholder="Your Name" class="Contact-inputs" required>
+      <input type="email" name="email" placeholder="Your Email" class="Contact-inputs" required>
+      <textarea name="message" placeholder="Your Message" class="Contact-inputs" required></textarea>
+      <button type="submit">Submit <img src="Images/arrow_icon.png" alt=""></button>
+    </form>
+    <div class="Contact-right">
+      <img src="Images/right_img.png" alt="">
+    </div>
+  </div>
+</body>
+</html>
