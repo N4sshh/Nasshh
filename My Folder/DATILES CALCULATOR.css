@@ -1,0 +1,85 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #bdc3c7;
+  background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
+  background: linear-gradient(to right, #2c3e50, #bdc3c7);
+}
+
+#calculator {
+  font-family: Arial, sans-serif;
+  background-color: #22252D;
+  width: 90%;
+  max-width: 400px;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#display {
+  width: 100%;
+  padding: 1.5rem;
+  font-size: 2rem;
+  text-align: right;
+  border: none;
+  background-color: #262933;
+  color: white;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+#keys {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: transparent;
+  border-radius: 1.5rem 1.5rem 0 0;
+}
+
+button {
+  width: 100%;
+  padding: 1rem 0;
+  height: 80px; /* Maintain the increased height of the buttons */
+  border-radius: 1rem;
+  border: none;
+  background-color: #262933;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #34495e;
+}
+
+button:active {
+  background-color: #34495e;
+}
+
+.operator-btn {
+  background-color: #eb6666;
+}
+
+.operator-btn:hover {
+  background-color: #eb6666;
+}
+
+.operator-btn:active {
+  background-color: #eb6666;
+}
+
+/* Ensure universal margin, padding reset, and gradient background */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
