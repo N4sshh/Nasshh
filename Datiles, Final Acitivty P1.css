@@ -1,0 +1,157 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#header {
+  position: relative; 
+}
+
+header {
+  background: #000000; 
+  background: -webkit-linear-gradient(to right, #434343, #000000);  
+  background: linear-gradient(to right, #434343, #000000);  
+  color: white;
+  padding: 20px;
+  width: 100%;
+  height: 70px;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+header img.logo {
+  height: 60px;
+  border-radius: 50%;
+  position: absolute;
+  left: 90px; 
+}
+
+header h1 {
+  margin: 0;
+  font-size: 3em;
+  background: linear-gradient(to right, #34e89e, #34e89e); 
+  -webkit-background-clip: text; 
+  background-clip: text; 
+  color: transparent;
+  text-align: center;
+  z-index: 1;
+}
+
+#nav {
+  position: absolute;
+  right: 20px; 
+  display: flex;
+  align-items: center;
+}
+
+#nav a {
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  transition: color 0.4s ease; 
+}
+
+#nav a:hover {
+  color: rgb(255, 0, 0); 
+}
+
+main {
+  padding: 20px;
+}
+
+#My_Dream {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
+  padding: 20px;
+}
+
+#My_Dream img.me {
+  height: 150px; 
+  margin-right: 20px; 
+  border-radius: 50%;
+}
+
+#My_Dream h1 {
+  margin: 0; 
+  font-size: 25px; 
+}
+
+#More_Info_About_Me img.Me_Formal{
+  height: 150px; 
+  margin-right: 20px; 
+  border-radius: 50%;
+}
+
+#More_Info_About_Me h2 {
+  margin: 0; 
+  font-size: 25px; 
+}
+
+#More_Info_About_Me {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
+  padding: 20px;
+}
+
+#Fun_Fact img.labutaw {
+  width: 150px; 
+  height: 150px; 
+  border-radius: 50%; 
+  margin-bottom: 10px;
+  margin-top: -10px; 
+}
+
+#Fun_Fact h2 {
+  margin: 25px; 
+  font-size: 25px; 
+}
+
+#Fun_Fact {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  position: relative; 
+}
+
+.square {
+  position: absolute; 
+  bottom: 20px;
+  left: 74%; 
+  transform: translateX(-50%); 
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(to bottom, #00e8fd , #00eaff, #00aeff); 
+  border-radius: 10px; 
+}
+
+#footer {
+  position: relative; 
+}
+
+footer {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background: #000000; 
+  background: -webkit-linear-gradient(to right, #434343, #000000);  
+  background: linear-gradient(to right, #434343, #000000);  
+  color: white;
+}
+
+footer h2 {
+  margin: 0;
+  font-size: 1em; 
+  color: white;
+}
+
