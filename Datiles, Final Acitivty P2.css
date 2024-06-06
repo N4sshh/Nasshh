@@ -187,3 +187,28 @@ footer h2 {
   margin-top: 20px; 
   margin-bottom: 35px;
 }
+
+#Unexpected_Circle_of_Friends img.Unexpected_Circle_of_Friends {
+  width: 200px; 
+  height: 200px; 
+  border-radius: 75%; 
+  margin-bottom: 10px;
+  margin-top: -10px;
+  object-fit: cover;
+}
+
+#Unexpected_Circle_of_Friends h1 {
+  margin: 25px;
+  font-size: 18px; 
+}
+
+#Unexpected_Circle_of_Friends {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  position: relative; 
+  background-color: #E6DADA; 
+  margin-top: 20px; 
+  margin-bottom: 35px;
+}
