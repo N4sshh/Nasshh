@@ -1,0 +1,257 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#header {
+  position: relative; 
+}
+
+header {
+  background: #000046; 
+  background: -webkit-linear-gradient(to right, #F0C27B, #4B1248);  
+  background: linear-gradient(to right, #F0C27B, #4B1248); 
+  padding: 20px;
+  width: 100%;
+  height: 70px;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+header img.logo {
+  height: 60px;
+  border-radius: 50%;
+  position: absolute;
+  left: 90px; 
+}
+
+header h1 {
+  margin: 0;
+  font-size: 3em;
+  background: linear-gradient(to right, #ffffff, #ffffff); 
+  -webkit-background-clip: text; 
+  background-clip: text; 
+  color: transparent;
+  text-align: center;
+  z-index: 1;
+}
+
+#nav {
+  position: absolute;
+  right: 20px; 
+  display: flex;
+  align-items: center;
+}
+
+#nav a {
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  transition: color 0.4s ease; 
+  background: linear-gradient(to right, #ffffff, #ffffff); 
+  -webkit-background-clip: text; 
+  background-clip: text; 
+  color: transparent;
+  text-align: center;
+  z-index: 1;
+}
+
+#nav a:hover {
+  color: #00c8ff; 
+}
+
+main {
+  padding: 20px;
+}
+
+#Clannad {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #E6DADA;
+  margin-top: 20px;
+}
+
+#Clannad img.Clannad {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  margin-top: -10px;
+}
+
+#Clannad h1 {
+  margin: 25px;
+  font-size: 18px;
+}
+
+#Your_Lie_In_April {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #E6DADA;
+  margin-top: 20px;
+}
+
+#Your_Lie_In_April img.Your_Lie_In_April {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  margin-top: -10px;
+}
+
+#Your_Lie_In_April h1 {
+  margin: 25px;
+  font-size: 18px;
+}
+
+#Tokyo_Ghoul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #E6DADA;
+  margin-top: 20px;
+}
+
+#Tokyo_Ghoul img.Tokyo_Ghoul {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  margin-top: -10px;
+}
+
+#Tokyo_Ghoul h1 {
+  margin: 25px;
+  font-size: 18px;
+}
+
+#Full_Metal_Alchemist {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #E6DADA;
+  margin-top: 20px;
+}
+
+#Full_Metal_Alchemist img.Full_Metal_Alchemist {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  margin-top: -10px;
+}
+
+#Full_Metal_Alchemist h1 {
+  margin: 25px;
+  font-size: 18px;
+}
+
+#Angel_Beats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #E6DADA;
+  margin-top: 20px;
+}
+
+#Angel_Beats img.Angel_Beats {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  margin-top: -10px;
+}
+
+#Angel_Beats h1 {
+  margin: 25px;
+  font-size: 18px;
+}
+
+#Attack_on_Titan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #E6DADA;
+  margin-top: 20px;
+}
+
+#Attack_on_Titan img.Attack_on_Titan {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  margin-top: -10px;
+  margin-left: -365px;
+}
+
+#Attack_on_Titan h1 {
+  margin: 25px;
+  font-size: 18px;
+}
+
+
+#footer {
+  position: relative; 
+}
+
+footer {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background: #000046;  
+background: -webkit-linear-gradient(to right, #F0C27B, #4B1248); 
+background: linear-gradient(to right, #F0C27B, #4B1248); 
+
+}
+
+footer h2 {
+  margin: 0;
+  font-size: 1em; 
+  color: white;
+  background: linear-gradient(to right, #ffffff, #ffffff); 
+  -webkit-background-clip: text; 
+  background-clip: text; 
+  color: transparent;
+  text-align: center;
+  z-index: 1;
+}
+
+#New_Circle_of_Friends img.New_Circle_of_Friends {
+  width: 200px; 
+  height: 200px; 
+  border-radius: 50%; 
+  margin-bottom: 10px;
+  margin-top: -10px;
+}
+
+#New_Circle_of_Friends h1 {
+  margin: 25px;
+  font-size: 18px; 
+}
+
+#New_Circle_of_Friends {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  position: relative; 
+  background-color: #E6DADA; 
+  margin-top: 20px; 
+  margin-bottom: 35px;
+}
