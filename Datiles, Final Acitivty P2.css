@@ -19,30 +19,28 @@ header {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: space-between; /* Ensure spacing between elements */
 }
 
 header img.logo {
   height: 60px;
   border-radius: 50%;
-  position: absolute;
-  left: 90px; 
 }
 
 header h1 {
   margin: 0;
-  font-size: 3em;
+  font-size: 2em;
   background: linear-gradient(to right, #64b3f4, #c2e59c); 
   -webkit-background-clip: text; 
   background-clip: text; 
   color: transparent;
   text-align: center;
   z-index: 1;
+  flex-grow: 1; /* Ensure h1 takes up available space */
+  text-align: center; /* Center the text */
 }
 
 #nav {
-  position: absolute;
-  right: 20px; 
   display: flex;
   align-items: center;
 }
@@ -51,14 +49,12 @@ header h1 {
   margin: 0 15px;
   color: white;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 1em;
   transition: color 0.4s ease; 
   background: linear-gradient(to right, #64b3f4, #c2e59c); 
   -webkit-background-clip: text; 
   background-clip: text; 
   color: transparent;
-  text-align: center;
-  z-index: 1;
 }
 
 #nav a:hover {
@@ -69,71 +65,35 @@ main {
   padding: 20px;
 }
 
-#My_Dream_Girl {
+#My_Dream_Girl, #My_Dream_Woman, #Circle_of_Friends, #New_Circle_of_Friends, #Unexpected_Circle_of_Friends {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 20px;
   background-color: #E6DADA; 
   margin-top: 20px; 
+  flex-wrap: wrap;
 }
 
-#My_Dream_Girl img.Nash_Hazel {
+#My_Dream_Girl img.Nash_Hazel, 
+#My_Dream_Woman img.Nash_Lendsay, 
+#Circle_of_Friends img.Circle_of_Friends, 
+#New_Circle_of_Friends img.New_Circle_of_Friends, 
+#Unexpected_Circle_of_Friends img.Unexpected_Circle_of_Friends {
   width: 200px; 
   height: 200px; 
   border-radius: 50%; 
-  margin-bottom: 10px;
-  margin-top: -10px; 
+  margin-right: 20px; 
 }
 
-#My_Dream_Girl h1 {
-  margin: 25px;
-  font-size: 18px; 
-}
-
-#My_Dream_Woman {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 20px;
-  background-color: #E6DADA; 
-  margin-top: 20px; 
-}
-
-#My_Dream_Woman img.Nash_Lendsay {
-  width: 200px; 
-  height: 200px; 
-  border-radius: 50%; 
-  margin-bottom: 10px;
-  margin-top: -10px; 
-}
-
-#My_Dream_Woman h1 {
-  margin: 25px;
-  font-size: 18px; 
-}
-
-#Circle_of_Friends img.Circle_of_Friends {
-  width: 200px; 
-  height: 200px; 
-  border-radius: 50%; 
-  margin-bottom: 10px;
-  margin-top: -10px;
-}
-
-#Circle_of_Friends h1 {
-  margin: 25px;
-  font-size: 18px; 
-}
-
-#Circle_of_Friends {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 20px;
-  position: relative; 
-  background-color: #E6DADA; 
-  margin-top: 20px; 
+#My_Dream_Girl h1, 
+#My_Dream_Woman h1, 
+#Circle_of_Friends h1, 
+#New_Circle_of_Friends h1, 
+#Unexpected_Circle_of_Friends h1 {
+  margin: 0; 
+  font-size: 1.5em; 
+  flex: 1;
 }
 
 #footer {
@@ -160,55 +120,37 @@ footer h2 {
   -webkit-background-clip: text; 
   background-clip: text; 
   color: transparent;
-  text-align: center;
-  z-index: 1;
 }
 
-#New_Circle_of_Friends img.New_Circle_of_Friends {
-  width: 200px; 
-  height: 200px; 
-  border-radius: 50%; 
-  margin-bottom: 10px;
-  margin-top: -10px;
+/* Media Queries for Responsiveness */
+@media (min-width: 768px) {
+  header h1 {
+    font-size: 2.5em;
+  }
+
+  #My_Dream_Girl h1, 
+  #My_Dream_Woman h1, 
+  #Circle_of_Friends h1, 
+  #New_Circle_of_Friends h1, 
+  #Unexpected_Circle_of_Friends h1 {
+    font-size: 2em;
+  }
 }
 
-#New_Circle_of_Friends h1 {
-  margin: 25px;
-  font-size: 18px; 
-}
+@media (min-width: 1024px) {
+  header h1 {
+    font-size: 3em;
+  }
 
-#New_Circle_of_Friends {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 20px;
-  position: relative; 
-  background-color: #E6DADA; 
-  margin-top: 20px; 
-  margin-bottom: 35px;
-}
+  #My_Dream_Girl h1, 
+  #My_Dream_Woman h1, 
+  #Circle_of_Friends h1, 
+  #New_Circle_of_Friends h1, 
+  #Unexpected_Circle_of_Friends h1 {
+    font-size: 2.5em;
+  }
 
-#Unexpected_Circle_of_Friends img.Unexpected_Circle_of_Friends {
-  width: 200px; 
-  height: 200px; 
-  border-radius: 75%; 
-  margin-bottom: 10px;
-  margin-top: -10px;
-  object-fit: cover;
-}
-
-#Unexpected_Circle_of_Friends h1 {
-  margin: 25px;
-  font-size: 18px; 
-}
-
-#Unexpected_Circle_of_Friends {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 20px;
-  position: relative; 
-  background-color: #E6DADA; 
-  margin-top: 20px; 
-  margin-bottom: 35px;
+  #nav a {
+    font-size: 1.2em;
+  }
 }
