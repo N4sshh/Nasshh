@@ -20,30 +20,28 @@ header {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: space-between; /* Change from center to space-between */
 }
 
 header img.logo {
   height: 60px;
   border-radius: 50%;
-  position: absolute;
-  left: 90px; 
 }
 
 header h1 {
   margin: 0;
-  font-size: 3em;
+  font-size: 2em;
   background: linear-gradient(to right, #34e89e, #34e89e); 
   -webkit-background-clip: text; 
   background-clip: text; 
   color: transparent;
   text-align: center;
   z-index: 1;
+  flex-grow: 1; /* Ensure h1 takes up available space */
+  text-align: center; /* Center the text */
 }
 
 #nav {
-  position: absolute;
-  right: 20px; 
   display: flex;
   align-items: center;
 }
@@ -52,7 +50,7 @@ header h1 {
   margin: 0 15px;
   color: white;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 1em;
   transition: color 0.4s ease; 
 }
 
@@ -64,72 +62,33 @@ main {
   padding: 20px;
 }
 
-#My_Dream {
+#My_Dream, #More_Info_About_Me, #Fun_Fact {
   display: flex;
   align-items: center;
   justify-content: flex-start; 
   padding: 20px;
+  flex-wrap: wrap;
 }
 
-#My_Dream img.me {
-  height: 150px; 
-  margin-right: 20px; 
-  border-radius: 50%;
-}
-
-#My_Dream h1 {
-  margin: 0; 
-  font-size: 25px; 
-}
-
-#More_Info_About_Me img.Me_Formal{
-  height: 150px; 
-  margin-right: 20px; 
-  border-radius: 50%;
-}
-
-#More_Info_About_Me h2 {
-  margin: 0; 
-  font-size: 25px; 
-}
-
-#More_Info_About_Me {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; 
-  padding: 20px;
-}
-
-#Fun_Fact img.labutaw {
+#My_Dream img.me, #More_Info_About_Me img.Me_Formal, #Fun_Fact img.labutaw {
   width: 150px; 
   height: 150px; 
-  border-radius: 50%; 
-  margin-bottom: 10px;
-  margin-top: -10px; 
+  margin-right: 20px; 
+  border-radius: 50%;
 }
 
-#Fun_Fact h2 {
-  margin: 25px; 
-  font-size: 25px; 
-}
-
-#Fun_Fact {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 20px;
-  position: relative; 
+#My_Dream h1, #More_Info_About_Me h2, #Fun_Fact h2 {
+  margin: 0; 
+  font-size: 1.5em; 
+  flex: 1;
 }
 
 .square {
-  position: absolute; 
-  bottom: 20px;
-  left: 74%; 
-  transform: translateX(-50%); 
-  width: 200px;
-  height: 200px;
-  background: linear-gradient(to bottom, #00e8fd , #00eaff, #00aeff); 
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(to bottom, #00e8fd, #00eaff, #00aeff); 
   border-radius: 10px; 
+  margin-left: 20px; /* Ensure spacing between text and square */
 }
 
 #footer {
@@ -155,3 +114,27 @@ footer h2 {
   color: white;
 }
 
+/* Media Queries for Responsiveness */
+@media (min-width: 768px) {
+  header h1 {
+    font-size: 2.5em;
+  }
+
+  #My_Dream h1, #More_Info_About_Me h2, #Fun_Fact h2 {
+    font-size: 2em;
+  }
+}
+
+@media (min-width: 1024px) {
+  header h1 {
+    font-size: 3em;
+  }
+
+  #My_Dream h1, #More_Info_About_Me h2, #Fun_Fact h2 {
+    font-size: 2.5em;
+  }
+
+  #nav a {
+    font-size: 1.2em;
+  }
+}
