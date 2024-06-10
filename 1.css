@@ -1,0 +1,92 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #3C3B3F;
+  overflow-x: hidden;
+}
+
+.container_2_All {
+  max-width: 40%;
+  margin: 2% auto;
+  padding: 10px;
+  background-color: #bdc3c7;
+  box-sizing: border-box;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  background-color: #2c3e50;
+  margin-bottom: 20px;
+  border-radius: 10px 10px 0 0;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2em;
+  color: #fff;
+}
+
+main {
+  padding: 20px;
+  text-align: center;
+}
+
+.Wrapr {
+  background-color: #2c3e50;
+  padding: 20px;
+  color: black;
+  border-radius: 10px;
+}
+
+#Jelaibel_md_bd img {
+  width: 400px;
+  height: 400px;
+  border-radius: 10%;
+  margin-bottom: 10px;
+  margin-top: -30px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+main h2 {
+  font-size: 18px;
+  text-align: center;
+  color: #fff;
+}
+
+footer {
+  background-color: #2c3e50;
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 0 0 10px 10px;
+}
+
+#NAV {
+  margin-top: 10px;
+}
+
+#NP {
+  margin-top: 10px;
+}
+
+.Next_Page {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5em;
+  transition: color 0.4s ease;
+}
+
+.Next_Page:hover {
+  color: black;
+}
+
+footer p {
+  margin: 0;
+  color: #fff;
+  font-size: 2em;
+}
