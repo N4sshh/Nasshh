@@ -1,0 +1,129 @@
+/* Coldplay Theme Styles */
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Overall body styling */
+body.coldplay-theme {
+    background-color: #1e1e1e; /* Dark background to match Coldplay's style */
+    color: #fff; /* White text for a clean contrast */
+    font-family: 'Arial', 'Helvetica', sans-serif; /* Modern, simple font */
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #1f5f84; /* Deep blue to represent Coldplay's mood */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center; /* Center the contents of the navbar */
+    align-items: center;
+    position: sticky; /* Make the navbar sticky */
+    top: 0; /* Stick to the top */
+    z-index: 1000; /* Ensure it stays above other content */
+}
+
+.navbar .logo {
+    color: #fff;
+    font-size: 28px; /* Increased font size for prominence */
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 39%; /* Position the logo in the center */
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar .back-button {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px; /* Slightly larger font size */
+    margin-left: auto; /* Pushes the back button to the right */
+}
+
+.navbar .back-button:hover {
+    color: #f0f0f0;
+}
+
+/* Main Content */
+.main-container {
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    padding: 30px;
+    flex: 1;
+}
+
+/* Song List Header */
+h2 {
+    font-size: 1.5rem; /* Set heading size */
+    color: #f7b731; /* Golden yellow to match Coldplay's aesthetic */
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ecf0f1; /* Add a bottom border */
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+/* Video Grid Styling */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two videos per row */
+    gap: 30px; /* Space between video items */
+    margin-top: 20px;
+    justify-items: center; /* Center items within their grid cells */
+}
+
+/* Video Item Styling */
+.video-item {
+    display: flex;
+    flex-direction: column; /* Stack video and title vertically */
+    align-items: center;
+    text-align: center;
+    background-color: #333; /* Dark background for contrast */
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 80%; /* Set width to 80% to ensure a consistent look */
+}
+
+.video-item:hover {
+    transform: scale(1.05); /* Zoom effect when hovering */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Video Element Styling */
+video {
+    width: 100%; /* Ensure video takes full width of the container */
+    border: 3px solid #f7b731; /* Golden yellow border for video element */
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Video Title Styling */
+.video-item h4 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #f7b731; /* Gold for titles */
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+/* Responsiveness for smaller screens */
+@media screen and (max-width: 768px) {
+    .video-grid {
+        grid-template-columns: 1fr; /* Stack videos in one column for small screens */
+    }
+
+    .video-item {
+        width: 100%; /* Adjust to full width */
+    }
+}

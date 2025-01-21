@@ -1,0 +1,174 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(120deg, #f0f0f0, #eaeaea); /* Subtle gradient */
+    color: #444;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222; /* Darker navbar */
+    color: #fff;
+    padding: 15px 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    justify-items: center;
+    align-items: center;
+}
+
+.navbar .back-button {
+    text-decoration: none;
+    color: #f0f0f0;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar .back-button:hover {
+    color: #ffd700; /* Highlighted on hover */
+}
+
+/* Main Container */
+.main-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 15px; /* More pronounced round corners */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color: #333;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Artist Portfolio Section */
+.artist-portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    justify-items: center;
+}
+
+.artist {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.artist:hover {
+    transform: translateY(-10px) scale(1.05); /* Slight hover effect */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.artist img {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.artist h3 {
+    margin-top: 15px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #222;
+}
+
+.artist .artist-bio {
+    font-size: 1rem;
+    margin-top: 10px;
+    color: #666;
+}
+
+.artist .view-songs {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: linear-gradient(90deg, #333, #555); /* Gradient button */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.4s ease, transform 0.4s ease;
+}
+
+.artist .view-songs:hover {
+    background: linear-gradient(90deg, #555, #333); /* Reverse gradient */
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-container {
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .artist-portfolio {
+        grid-template-columns: 1fr; /* Single column */
+    }
+
+    h2 {
+        font-size: 1.8rem; /* Smaller headings for mobile */
+    }
+}
+
+/* Link Styling */
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}

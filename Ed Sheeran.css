@@ -1,0 +1,128 @@
+/* Ed Sheeran Theme Styles */
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Overall body styling */
+body.ed-sheeran-theme {
+    background-color: #f0f0f0; /* Light background for a fresh, clean look */
+    color: #333; /* Dark text for better readability */
+    font-family: 'Helvetica', 'Arial', sans-serif; /* Clean, modern font */
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #f4a261; /* Soft orange for Ed Sheeran's signature color */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center; /* Center the contents of the navbar */
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    color: #fff;
+    font-size: 28px; /* Increased font size */
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 39%; /* Center the title */
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar .back-button {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    margin-left: auto;
+}
+
+.navbar .back-button:hover {
+    color: #f0f0f0;
+}
+
+/* Main Content */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    padding: 30px;
+    flex: 1;
+}
+
+/* Song List Header */
+h2 {
+    font-size: 1.5rem;
+    color: #2d3436; /* Deep gray color for a neutral tone */
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #dfe6e9; /* Light border to match the theme */
+    padding-bottom: 5px;
+    text-align: center; /* Center the text */
+}
+
+/* Video Grid Styling */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two videos per row */
+    gap: 30px;
+    margin-top: 20px;
+    justify-items: center; /* Center items in their grid cells */
+}
+
+/* Video Item Styling */
+.video-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center contents */
+    text-align: center;
+    background-color: #fff; /* Light background for contrast */
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 80%; /* Set width to 80% for larger videos with spacing */
+}
+
+.video-item:hover {
+    transform: scale(1.05); /* Zoom effect */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Video Element Styling */
+video {
+    width: 100%; /* Video takes full width of the container */
+    border: 3px solid #f4a261; /* Soft orange border */
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Video Title Styling */
+.video-item h4 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #f39c12; /* Gold color for titles */
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+/* Responsiveness for smaller screens */
+@media screen and (max-width: 768px) {
+    .video-grid {
+        grid-template-columns: 1fr; /* Stack videos into one column on smaller screens */
+    }
+
+    .video-item {
+        width: 100%; /* Adjust to full width on small screens */
+    }
+}
