@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bruno Mars Music Videos</title>
     <link rel="stylesheet" href="bruno.css"> <!-- Link to Bruno Mars CSS -->
+    <script>
+        // JavaScript to pause other videos when one is played
+        document.addEventListener('DOMContentLoaded', () => {
+            const videos = document.querySelectorAll('video');
+            
+            videos.forEach(video => {
+                video.addEventListener('play', () => {
+                    videos.forEach(otherVideo => {
+                        if (otherVideo !== video) {
+                            otherVideo.pause();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </head>
 <body class="bruno-mars-theme">
     <!-- Navigation Bar -->
