@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adele Music Videos</title>
     <link rel="stylesheet" href="adele.css"> <!-- Link to Adele CSS -->
+    <script>
+        // JavaScript to pause other videos when one is played
+        document.addEventListener('DOMContentLoaded', () => {
+            const videos = document.querySelectorAll('video');
+            
+            videos.forEach(video => {
+                video.addEventListener('play', () => {
+                    videos.forEach(otherVideo => {
+                        if (otherVideo !== video) {
+                            otherVideo.pause();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </head>
 <body class="adele-theme">
     <!-- Navigation Bar -->
@@ -20,7 +36,7 @@
         <div class="video-grid">
             <div class="video-item">
                 <video controls>
-                    <source id="video-source" src="Adele MP4/Adele - Chasing Pavements (Official Music Video).mp4" type="video/mp4">
+                    <source src="Adele - Chasing Pavements (Official Music Video).mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <h4>Chasing Pavements</h4>
@@ -28,7 +44,7 @@
 
             <div class="video-item">
                 <video controls>
-                    <source id="video-source" src="Adele MP4/Adele - Easy On Me (Official Video).mp4" type="video/mp4">
+                    <source src="Adele - Easy On Me (Official Video).mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <h4>Easy On Me</h4>
@@ -36,7 +52,7 @@
 
             <div class="video-item">
                 <video controls>
-                    <source id="video-source" src="Adele MP4/Adele - Hello (Official Music Video).mp4" type="video/mp4">
+                    <source src="Adele - Hello (Official Music Video).mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <h4>Hello</h4>
@@ -44,7 +60,7 @@
 
             <div class="video-item">
                 <video controls>
-                    <source id="video-source" src="Adele MP4/Adele - Rolling in the Deep (Official Music Video).mp4" type="video/mp4">
+                    <source src="Adele - Rolling in the Deep (Official Music Video).mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <h4>Rolling in the Deep</h4>
@@ -52,7 +68,7 @@
 
             <div class="video-item">
                 <video controls>
-                    <source id="video-source" src="Adele MP4/Adele - Set Fire To The Rain (Official Music Video).mp4" type="video/mp4">
+                    <source src="Adele - Set Fire To The Rain (Official Music Video).mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <h4>Set Fire To The Rain</h4>
@@ -60,7 +76,7 @@
 
             <div class="video-item">
                 <video controls>
-                    <source id="video-source" src="Adele MP4/Adele - Someone Like You (Official Music Video).mp4" type="video/mp4">
+                    <source src="Adele - Someone Like You (Official Music Video).mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <h4>Someone Like You</h4>
