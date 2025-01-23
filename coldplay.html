@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coldplay Music Videos</title>
     <link rel="stylesheet" href="coldplay.css"> <!-- Link to Coldplay CSS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const videos = document.querySelectorAll("video");
+
+            videos.forEach((video) => {
+                video.addEventListener("play", () => {
+                    videos.forEach((otherVideo) => {
+                        if (otherVideo !== video) {
+                            otherVideo.pause();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </head>
 <body class="coldplay-theme">
     <!-- Navigation Bar -->
@@ -20,7 +35,7 @@
         <div class="video-grid">
             <div class="video-item">
                 <video controls>
-                    <source id="video-source" src="Coldplay MP4/Coldplay & The Chainsmokers - Something Just Like This [Tokyo Remix] (Official Audio).mp4" type="video/mp4">
+                    <source src="Coldplay%20MP4/Coldplay%20&%20The%20Chainsmokers%20-%20Something%20Just%20Like%20This%20[Tokyo%20Remix]%20(Official%20Audio).mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <h4>Something Just Like This</h4>
@@ -28,7 +43,7 @@
 
             <div class="video-item">
                 <video controls>
-                    <source id="video-source" src="Coldplay MP4/Coldplay - A Sky Full Of Stars (Official Video).mp4" type="video/mp4">
+                    <source src="Coldplay%20MP4/Coldplay%20-%20A%20Sky%20Full%20Of%20Stars%20(Official%20Video).mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <h4>A Sky Full of Stars</h4>
@@ -36,7 +51,7 @@
 
             <div class="video-item">
                 <video controls>
-                    <source id="video-source" src="Coldplay MP4/Coldplay - Fix You (Official Video).mp4" type="video/mp4">
+                    <source src="Coldplay%20MP4/Coldplay%20-%20Fix%20You%20(Official%20Video).mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <h4>Fix You</h4>
@@ -44,7 +59,7 @@
 
             <div class="video-item">
                 <video controls>
-                    <source id="video-source" src="Coldplay MP4/Coldplay - Hymn For The Weekend (Official Video).mp4" type="video/mp4">
+                    <source src="Coldplay%20MP4/Coldplay%20-%20Hymn%20For%20The%20Weekend%20(Official%20Video).mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <h4>Hymn For The Weekend</h4>
@@ -52,7 +67,7 @@
 
             <div class="video-item">
                 <video controls>
-                    <source id="video-source" src="Coldplay MP4/Coldplay - The Scientist (Official 4K Video).mp4" type="video/mp4">
+                    <source src="Coldplay%20MP4/Coldplay%20-%20The%20Scientist%20(Official%204K%20Video).mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <h4>The Scientist</h4>
@@ -60,7 +75,7 @@
 
             <div class="video-item">
                 <video controls>
-                    <source id="video-source" src="Coldplay MP4/Coldplay - Yellow (Official Video).mp4" type="video/mp4">
+                    <source src="Coldplay%20MP4/Coldplay%20-%20Yellow%20(Official%20Video).mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <h4>Yellow</h4>
