@@ -5,60 +5,64 @@ let currentTry = 1;  // 1 for Team 1's turn, 2 for Team 2's turn
 
 const questions = [
     {
-        question: "Which PHP function is used to display output?",
-        options: ["echo", "print", "write", "show"],
-        correct: "echo"
+        question: "Which HTML tag is used to define a hyperlink?",
+        options: ["<a>", "<link>", "<href>", "<script>"],
+        correct: "<a>"
     },
     {
-        question: "What does the `$_POST` variable do in PHP?",
-        options: ["Stores form data", "Stores session data", "Stores URL parameters", "Stores cookies"],
-        correct: "Stores form data"
+        question: "Which CSS property is used to change text color?",
+        options: ["color", "font-color", "background-color", "text-color"],
+        correct: "color"
     },
     {
-        question: "Which of the following is used to start a session in PHP?",
-        options: ["session_start()", "session_begin()", "session_create()", "start_session()"],
-        correct: "session_start()"
+        question: "What will the following code output? console.log(3 + '3');",
+        options: ["33", "6", "error", "NaN"],
+        correct: "33"
     },
     {
-        question: "How can you write a single-line comment in PHP?",
-        options: ["// Comment", "# Comment", "/* Comment */", "Both // and #"],
-        correct: "Both // and #"
+        question: "Which JavaScript method is used to add an event listener?",
+        options: ["addEventListener()", "eventListener()", "onEvent()", "bindEvent()"],
+        correct: "addEventListener()"
     },
     {
-        question: "Which symbol is used for variables in PHP?",
-        options: ["$", "&", "#", "@"],
-        correct: "$"
+        question: "What does CSS stand for?",
+        options: ["Cascading Style Sheets", "Creative Style Sheets", "Colorful Style Sheets", "Custom Style Sheets"],
+        correct: "Cascading Style Sheets"
     },
     {
-        question: "How do you define a constant in PHP?",
-        options: ["define('CONSTANT', value)", "const CONSTANT = value", "constant('CONSTANT', value)", "Both 1 and 2"],
-        correct: "Both 1 and 2"
+        question: "Which HTML attribute specifies an alternate text for an image?",
+        options: ["alt", "title", "src", "href"],
+        correct: "alt"
     },
     {
-        question: "What is the default port number for MySQL?",
-        options: ["3306", "8080", "443", "21"],
-        correct: "3306"
+        question: "Which of the following is used for styling web pages?",
+        options: ["HTML", "CSS", "JavaScript", "XML"],
+        correct: "CSS"
     },
     {
-        question: "Which function is used to open a file in PHP?",
-        options: ["fopen()", "file_open()", "open_file()", "open()"],
-        correct: "fopen()"
+        question: "Which JavaScript function is used to parse a string to an integer?",
+        options: ["parseInt()", "parseFloat()", "intParse()", "parseString()"],
+        correct: "parseInt()"
     },
     {
-        question: "How do you declare an array in PHP?",
-        options: ["array()", "[]", "array[]", "new Array()"],
-        correct: "array()"
+        question: "Which HTML element is used to define a list item?",
+        options: ["<li>", "<item>", "<ul>", "<list>"],
+        correct: "<li>"
     },
     {
-        question: "What does `$_SESSION` store in PHP?",
-        options: ["User session data", "Cookies", "Form data", "URL parameters"],
-        correct: "User session data"
+        question: "Which CSS property is used to set the background color of an element?",
+        options: ["background-color", "color", "bgcolor", "background"],
+        correct: "background-color"
     }
 ];
 
 function loadQuestion() {
     const questionElement = document.getElementById('question');
     const optionsElement = document.getElementById('answer-options');
+    const resultElement = document.getElementById('result');  // To display correct answer
+
+    // Clear previous result
+    resultElement.innerHTML = '';
 
     // Load the current question
     questionElement.innerText = questions[currentQuestion].question;
@@ -77,29 +81,20 @@ function loadQuestion() {
 
 function checkAnswer(selected) {
     const correctAnswer = questions[currentQuestion].correct;
+    const resultElement = document.getElementById('result');
 
+    // Show correct answer after selection
     if (selected === correctAnswer) {
         if (currentTry === 1) {
-            // Team 1 gets the point for the correct first answer
             team1Score++;
             alert('Correct! Team 1 gets 1 point.');
         } else if (currentTry === 2) {
-            // Team 2 gets the point for the correct second answer
             team2Score++;
             alert('Correct! Team 2 gets 1 point.');
         }
     } else {
         alert('Incorrect!');
-
-        if (currentTry === 1) {
-            // If Team 1 gets it wrong, switch to Team 2
-            currentTry = 2;
-        } else if (currentTry === 2) {
-            // If Team 2 gets it wrong, move to the next question
-            alert('Both teams got it wrong. Moving to the next question.');
-            nextQuestion();
-            return;
-        }
+        resultElement.innerHTML = `<p>Correct Answer: ${correctAnswer}</p>`;
     }
 
     // Update scores
@@ -108,19 +103,26 @@ function checkAnswer(selected) {
 
     // Disable the "Next Question" button until an answer is chosen
     document.getElementById('next-button').disabled = false;
+
+    // If Team 1 gets it wrong, switch to Team 2
+    if (currentTry === 1) {
+        currentTry = 2;
+    } else if (currentTry === 2) {
+        alert('Both teams got it wrong. Moving to the next question.');
+        nextQuestion();
+        return;
+    }
 }
 
 function nextQuestion() {
-    // Go to the next question
     currentQuestion++;
 
     if (currentQuestion < questions.length) {
         loadQuestion();
         document.getElementById('next-button').disabled = true;
-        currentTry = 1;  // Reset to Team 1's turn
+        currentTry = 1;
     } else {
         alert('Game Over!');
-        // Display final scores
         if (team1Score > team2Score) {
             alert('Team 1 wins!');
         } else if (team2Score > team1Score) {
