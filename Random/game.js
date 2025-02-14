@@ -1,68 +1,41 @@
+// game.js
 let team1Score = 0;
 let team2Score = 0;
 let currentQuestion = 0;
 let currentTry = 1;  // 1 for Team 1's turn, 2 for Team 2's turn
+let answered = false; // Track if both teams have answered
 
 const questions = [
     {
-        question: "Which HTML tag is used to define a hyperlink?",
-        options: ["<a>", "<link>", "<href>", "<script>"],
-        correct: "<a>"
+        question: "What does PHP stand for?",
+        options: ["Personal Home Page", "PHP: Hypertext Preprocessor", "Public Hosting Page", "Preprocessing Home Page"],
+        correct: "PHP: Hypertext Preprocessor"
     },
     {
-        question: "Which CSS property is used to change text color?",
-        options: ["color", "font-color", "background-color", "text-color"],
-        correct: "color"
+        question: "Which of the following is correct for declaring a variable in PHP?",
+        options: ["var x;", "$x;", "int x;", "declare x;"],
+        correct: "$x;"
     },
     {
-        question: "What will the following code output? console.log(3 + '3');",
-        options: ["33", "6", "error", "NaN"],
-        correct: "33"
+        question: "Which PHP function is used to send a header to the browser?",
+        options: ["send_header()", "header()", "set_header()", "http_header()"],
+        correct: "header()"
     },
     {
-        question: "Which JavaScript method is used to add an event listener?",
-        options: ["addEventListener()", "eventListener()", "onEvent()", "bindEvent()"],
-        correct: "addEventListener()"
+        question: "Which PHP function is used to include a file?",
+        options: ["include()", "require()", "include_once()", "require_once()"],
+        correct: "include()"
     },
     {
-        question: "What does CSS stand for?",
-        options: ["Cascading Style Sheets", "Creative Style Sheets", "Colorful Style Sheets", "Custom Style Sheets"],
-        correct: "Cascading Style Sheets"
-    },
-    {
-        question: "Which HTML attribute specifies an alternate text for an image?",
-        options: ["alt", "title", "src", "href"],
-        correct: "alt"
-    },
-    {
-        question: "Which of the following is used for styling web pages?",
-        options: ["HTML", "CSS", "JavaScript", "XML"],
-        correct: "CSS"
-    },
-    {
-        question: "Which JavaScript function is used to parse a string to an integer?",
-        options: ["parseInt()", "parseFloat()", "intParse()", "parseString()"],
-        correct: "parseInt()"
-    },
-    {
-        question: "Which HTML element is used to define a list item?",
-        options: ["<li>", "<item>", "<ul>", "<list>"],
-        correct: "<li>"
-    },
-    {
-        question: "Which CSS property is used to set the background color of an element?",
-        options: ["background-color", "color", "bgcolor", "background"],
-        correct: "background-color"
+        question: "How do you start a session in PHP?",
+        options: ["session_start();", "start_session();", "init_session();", "session_open();"],
+        correct: "session_start();"
     }
 ];
 
 function loadQuestion() {
     const questionElement = document.getElementById('question');
     const optionsElement = document.getElementById('answer-options');
-    const resultElement = document.getElementById('result');  // To display correct answer
-
-    // Clear previous result
-    resultElement.innerHTML = '';
 
     // Load the current question
     questionElement.innerText = questions[currentQuestion].question;
@@ -77,52 +50,54 @@ function loadQuestion() {
         li.onclick = () => checkAnswer(option);
         optionsElement.appendChild(li);
     });
+
+    // Reset the answered flag for this question
+    answered = false;
 }
 
 function checkAnswer(selected) {
     const correctAnswer = questions[currentQuestion].correct;
-    const resultElement = document.getElementById('result');
-
-    // Show correct answer after selection
-    if (selected === correctAnswer) {
-        if (currentTry === 1) {
-            team1Score++;
-            alert('Correct! Team 1 gets 1 point.');
-        } else if (currentTry === 2) {
-            team2Score++;
-            alert('Correct! Team 2 gets 1 point.');
-        }
-    } else {
-        alert('Incorrect!');
-        resultElement.innerHTML = `<p>Correct Answer: ${correctAnswer}</p>`;
-    }
-
-    // Update scores
-    document.getElementById('team1-score').innerText = team1Score;
-    document.getElementById('team2-score').innerText = team2Score;
-
-    // Disable the "Next Question" button until an answer is chosen
-    document.getElementById('next-button').disabled = false;
-
-    // If Team 1 gets it wrong, switch to Team 2
+    const feedbackElement = document.createElement('p');
+    
     if (currentTry === 1) {
-        currentTry = 2;
+        // If Team 1 answers
+        feedbackElement.innerText = selected === correctAnswer ? 'Correct! Team 1' : 'Incorrect! Team 1';
+        document.getElementById('team1-score').innerText = selected === correctAnswer ? team1Score + 1 : team1Score;
+        currentTry = 2;  // Switch to Team 2's turn
     } else if (currentTry === 2) {
-        alert('Both teams got it wrong. Moving to the next question.');
-        nextQuestion();
-        return;
+        // If Team 2 answers
+        feedbackElement.innerText = selected === correctAnswer ? 'Correct! Team 2' : 'Incorrect! Team 2';
+        document.getElementById('team2-score').innerText = selected === correctAnswer ? team2Score + 1 : team2Score;
+        currentTry = 1;  // Switch back to Team 1's turn
+        answered = true;
+    }
+    
+    // Display feedback (correct or incorrect) for both teams after they have answered
+    document.getElementById('question-container').appendChild(feedbackElement);
+    
+    // Once both teams have answered, show the correct answer
+    if (answered) {
+        setTimeout(() => {
+            alert(`The correct answer was: ${correctAnswer}`);
+            document.getElementById('next-button').disabled = false;
+        }, 500);
+    } else {
+        // Disable the next button until both teams have answered
+        document.getElementById('next-button').disabled = true;
     }
 }
 
 function nextQuestion() {
+    // Go to the next question
     currentQuestion++;
 
     if (currentQuestion < questions.length) {
         loadQuestion();
         document.getElementById('next-button').disabled = true;
-        currentTry = 1;
+        currentTry = 1;  // Reset to Team 1's turn
     } else {
         alert('Game Over!');
+        // Display final scores
         if (team1Score > team2Score) {
             alert('Team 1 wins!');
         } else if (team2Score > team1Score) {
