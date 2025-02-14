@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Dev Showdown Game</title>
+    
+    <!-- Adding the favicon -->
+    <link rel="icon" href="https://n4sshh.github.io/Nasshh/pakyu.jpg" type="image/jpeg">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Welcome to Web Dev Showdown!</h1>
+        <div id="scoreboard">
+            <p>Team 1: <span id="team1-score">0</span></p>
+            <p>Team 2: <span id="team2-score">0</span></p>
+        </div>
+
+        <div id="question-container">
+            <p id="question"></p>
+            <ul id="answer-options">
+                <!-- Answer options will go here -->
+            </ul>
+        </div>
+
+        <button id="next-button" onclick="nextQuestion()" disabled>Next Question</button>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
