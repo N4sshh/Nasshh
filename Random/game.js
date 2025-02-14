@@ -1,4 +1,3 @@
-// game.js
 let team1Score = 0;
 let team2Score = 0;
 let currentQuestion = 0;
@@ -30,12 +29,39 @@ const questions = [
         question: "How do you start a session in PHP?",
         options: ["session_start();", "start_session();", "init_session();", "session_open();"],
         correct: "session_start();"
+    },
+    {
+        question: "What is the correct HTML tag for the largest heading?",
+        options: ["<h1>", "<header>", "<h6>", "<title>"],
+        correct: "<h1>"
+    },
+    {
+        question: "Which attribute is used to specify the source of an image in HTML?",
+        options: ["src", "href", "source", "link"],
+        correct: "src"
+    },
+    {
+        question: "Which CSS property is used to change the font of an element?",
+        options: ["font-size", "font-family", "font-style", "font-weight"],
+        correct: "font-family"
+    },
+    {
+        question: "Which of the following is used to add a comment in CSS?",
+        options: ["/* comment */", "// comment", "# comment", "<!-- comment -->"],
+        correct: "/* comment */"
+    },
+    {
+        question: "Which HTML tag is used to define an unordered list?",
+        options: ["<ul>", "<ol>", "<li>", "<list>"],
+        correct: "<ul>"
     }
 ];
 
 function loadQuestion() {
     const questionElement = document.getElementById('question');
     const optionsElement = document.getElementById('answer-options');
+    const feedbackElement = document.getElementById('feedback'); // Clear feedback before loading new question
+    if (feedbackElement) feedbackElement.remove(); // Remove previous feedback
 
     // Load the current question
     questionElement.innerText = questions[currentQuestion].question;
@@ -58,7 +84,8 @@ function loadQuestion() {
 function checkAnswer(selected) {
     const correctAnswer = questions[currentQuestion].correct;
     const feedbackElement = document.createElement('p');
-    
+    const feedbackContainer = document.getElementById('question-container');
+
     if (currentTry === 1) {
         // If Team 1 answers
         feedbackElement.innerText = selected === correctAnswer ? 'Correct! Team 1' : 'Incorrect! Team 1';
@@ -72,9 +99,9 @@ function checkAnswer(selected) {
         answered = true;
     }
     
-    // Display feedback (correct or incorrect) for both teams after they have answered
-    document.getElementById('question-container').appendChild(feedbackElement);
-    
+    // Add feedback (correct or incorrect) to the screen
+    feedbackContainer.appendChild(feedbackElement);
+
     // Once both teams have answered, show the correct answer
     if (answered) {
         setTimeout(() => {
