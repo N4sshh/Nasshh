@@ -1,7 +1,7 @@
-/* styles.css */
 body {
     font-family: 'Arial', sans-serif;
-    background: #111;
+    background: url('https://n4sshh.github.io/Nasshh/web-development-concept-in-word-tag-cloud-on-black-background-CY2BHT.jpg') no-repeat center center fixed;
+    background-size: cover; /* Ensures the image covers the entire screen */
     color: white;
     text-align: center;
     margin: 0;
@@ -14,7 +14,7 @@ body {
     width: 80%;
     max-width: 900px;
     margin: 30px auto;
-    background: #2d2d2d;
+    background: rgba(45, 45, 45, 0.8); /* Transparent dark background to make text stand out */
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
