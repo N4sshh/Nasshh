@@ -1,4 +1,3 @@
-// game.js
 let team1Score = 0;
 let team2Score = 0;
 let currentQuestion = 0;
@@ -6,54 +5,54 @@ let currentTry = 1;  // 1 for Team 1's turn, 2 for Team 2's turn
 
 const questions = [
     {
-        question: "Which HTML tag is used to define a hyperlink?",
-        options: ["<a>", "<link>", "<href>", "<script>"],
-        correct: "<a>"
+        question: "Which PHP function is used to display output?",
+        options: ["echo", "print", "write", "show"],
+        correct: "echo"
     },
     {
-        question: "Which CSS property is used to change text color?",
-        options: ["color", "font-color", "background-color", "text-color"],
-        correct: "color"
+        question: "What does the `$_POST` variable do in PHP?",
+        options: ["Stores form data", "Stores session data", "Stores URL parameters", "Stores cookies"],
+        correct: "Stores form data"
     },
     {
-        question: "What will the following code output? console.log(3 + '3');",
-        options: ["33", "6", "error", "NaN"],
-        correct: "33"
+        question: "Which of the following is used to start a session in PHP?",
+        options: ["session_start()", "session_begin()", "session_create()", "start_session()"],
+        correct: "session_start()"
     },
     {
-        question: "Which JavaScript method is used to add an event listener?",
-        options: ["addEventListener()", "eventListener()", "onEvent()", "bindEvent()"],
-        correct: "addEventListener()"
+        question: "How can you write a single-line comment in PHP?",
+        options: ["// Comment", "# Comment", "/* Comment */", "Both // and #"],
+        correct: "Both // and #"
     },
     {
-        question: "What does CSS stand for?",
-        options: ["Cascading Style Sheets", "Creative Style Sheets", "Colorful Style Sheets", "Custom Style Sheets"],
-        correct: "Cascading Style Sheets"
+        question: "Which symbol is used for variables in PHP?",
+        options: ["$", "&", "#", "@"],
+        correct: "$"
     },
     {
-        question: "Which HTML attribute specifies an alternate text for an image?",
-        options: ["alt", "title", "src", "href"],
-        correct: "alt"
+        question: "How do you define a constant in PHP?",
+        options: ["define('CONSTANT', value)", "const CONSTANT = value", "constant('CONSTANT', value)", "Both 1 and 2"],
+        correct: "Both 1 and 2"
     },
     {
-        question: "Which of the following is used for styling web pages?",
-        options: ["HTML", "CSS", "JavaScript", "XML"],
-        correct: "CSS"
+        question: "What is the default port number for MySQL?",
+        options: ["3306", "8080", "443", "21"],
+        correct: "3306"
     },
     {
-        question: "Which JavaScript function is used to parse a string to an integer?",
-        options: ["parseInt()", "parseFloat()", "intParse()", "parseString()"],
-        correct: "parseInt()"
+        question: "Which function is used to open a file in PHP?",
+        options: ["fopen()", "file_open()", "open_file()", "open()"],
+        correct: "fopen()"
     },
     {
-        question: "Which HTML element is used to define a list item?",
-        options: ["<li>", "<item>", "<ul>", "<list>"],
-        correct: "<li>"
+        question: "How do you declare an array in PHP?",
+        options: ["array()", "[]", "array[]", "new Array()"],
+        correct: "array()"
     },
     {
-        question: "Which CSS property is used to set the background color of an element?",
-        options: ["background-color", "color", "bgcolor", "background"],
-        correct: "background-color"
+        question: "What does `$_SESSION` store in PHP?",
+        options: ["User session data", "Cookies", "Form data", "URL parameters"],
+        correct: "User session data"
     }
 ];
 
