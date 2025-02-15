@@ -1,7 +1,7 @@
 let team1Score = 0;
 let team2Score = 0;
 let currentQuestion = 0;
-let currentTry = 1;  // 1 for Team 1, 2 for Team 2
+let currentTry = 1; // 1 = Team 1's turn, 2 = Team 2's turn
 
 const questions = [
     { question: "What does PHP stand for?", options: ["Personal Home Page", "PHP: Hypertext Preprocessor", "Public Hosting Page", "Preprocessing Home Page"], correct: "PHP: Hypertext Preprocessor" },
@@ -16,86 +16,71 @@ const questions = [
     { question: "Which HTML tag is used to define an unordered list?", options: ["<ul>", "<ol>", "<li>", "<list>"], correct: "<ul>" }
 ];
 
+document.addEventListener("DOMContentLoaded", loadQuestion);
+
 function loadQuestion() {
-    const questionElement = document.getElementById('question');
-    const optionsElement = document.getElementById('answer-options');
-    const feedbackContainer = document.getElementById('feedback-container');
+    if (currentQuestion >= questions.length) {
+        showWinner();
+        return;
+    }
 
-    // Reset feedback messages
-    feedbackContainer.innerHTML = '';
-
-    // Load the current question
+    const questionElement = document.getElementById("question");
+    const optionsElement = document.getElementById("answer-options");
+    const feedbackContainer = document.getElementById("feedback-container");
+    feedbackContainer.innerHTML = ""; // Clear previous feedback
+    
     questionElement.innerText = questions[currentQuestion].question;
+    optionsElement.innerHTML = ""; // Clear previous options
 
-    // Clear previous options
-    optionsElement.innerHTML = '';
-
-    // Load answer options
     questions[currentQuestion].options.forEach(option => {
-        const li = document.createElement('li');
+        const li = document.createElement("li");
         li.innerText = option;
         li.onclick = () => checkAnswer(option);
         optionsElement.appendChild(li);
     });
-
-    document.getElementById('next-button').disabled = true; // Disable next button initially
 }
 
 function checkAnswer(selected) {
     const correctAnswer = questions[currentQuestion].correct;
-    const feedbackContainer = document.getElementById('feedback-container');
+    const feedbackContainer = document.getElementById("feedback-container");
 
-    if (currentTry === 1) {
-        // If Team 1 answers
-        if (selected === correctAnswer) {
-            feedbackContainer.innerHTML = `<p>Correct! Team 1</p>`;
-            team1Score++;
-            document.getElementById('team1-score').innerText = `Team 1: ${team1Score}`;
-
-            // Show correct answer and move to next question
-            setTimeout(() => {
-                nextQuestion();
-            }, 500);
-            return; // Skip Team 2's turn
-        } else {
-            feedbackContainer.innerHTML = `<p>Incorrect! Team 1</p>`;
-            currentTry = 2; // Switch to Team 2
-        }
+    if (selected === correctAnswer) {
+        feedbackContainer.innerHTML = `<p>Correct! ${currentTry === 1 ? "Team 1" : "Team 2"} gets a point.</p>`;
+        if (currentTry === 1) team1Score++; else team2Score++;
+        updateScores();
+        document.getElementById("next-button").style.display = "block"; // Show next button
     } else {
-        // If Team 2 answers
-        if (selected === correctAnswer) {
-            feedbackContainer.innerHTML += `<p>Correct! Team 2</p>`;
-            team2Score++;
-            document.getElementById('team2-score').innerText = `Team 2: ${team2Score}`;
+        feedbackContainer.innerHTML = `<p>Incorrect! ${currentTry === 1 ? "Team 1" : "Team 2"} answered wrong.</p>`;
+        if (currentTry === 1) {
+            currentTry = 2; // Switch to Team 2
         } else {
-            feedbackContainer.innerHTML += `<p>Incorrect! Team 2</p>`;
+            feedbackContainer.innerHTML += `<p>The correct answer was: ${correctAnswer}</p>`;
+            document.getElementById("next-button").style.display = "block"; // Show next button
         }
-
-        // Show correct answer before moving to the next question
-        setTimeout(() => {
-            nextQuestion();
-        }, 500);
     }
 }
 
 function nextQuestion() {
-    // Move to the next question
     currentQuestion++;
-
-    if (currentQuestion < questions.length) {
-        loadQuestion();
-        currentTry = 1; // Reset to Team 1's turn
-    } else {
-        alert('Game Over!');
-        if (team1Score > team2Score) {
-            alert('Team 1 wins!');
-        } else if (team2Score > team1Score) {
-            alert('Team 2 wins!');
-        } else {
-            alert('It\'s a tie!');
-        }
-    }
+    currentTry = 1; // Reset to Team 1
+    document.getElementById("next-button").style.display = "none"; // Hide next button
+    loadQuestion();
 }
 
-// Start the game
-loadQuestion();
+function updateScores() {
+    document.getElementById("team1-score").innerText = `Team 1: ${team1Score}`;
+    document.getElementById("team2-score").innerText = `Team 2: ${team2Score}`;
+}
+
+function showWinner() {
+    let winnerMessage = team1Score > team2Score ? "Team 1 wins!" : team2Score > team1Score ? "Team 2 wins!" : "It's a tie!";
+    alert(`Game Over! ${winnerMessage}`);
+}
+
+// Center the Next button
+document.addEventListener("DOMContentLoaded", () => {
+    const nextButton = document.getElementById("next-button");
+    nextButton.style.display = "block";
+    nextButton.style.margin = "20px auto";
+    nextButton.style.display = "none";
+});
