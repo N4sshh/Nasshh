@@ -4,27 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Dev Showdown Game</title>
-    <link rel="icon" href="https://n4sshh.github.io/Nasshh/pakyu.jpg" type="image/jpeg">
+    
+    <!-- Adding the favicon -->
+    <link rel="icon" href="https://n4sshh.github.io/Nasshh/favicon.png" type="image/png">
+
+    <!-- Link to CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="game-container">
         <h1>Welcome to Web Dev Showdown!</h1>
+
         <div id="scoreboard">
-            <p>Team 1: <span id="team1-score">0</span></p>
-            <p>Team 2: <span id="team2-score">0</span></p>
+            <p id="team1-score">Team 1: 0</p>
+            <p id="team2-score">Team 2: 0</p>
         </div>
 
         <div id="question-container">
-            <p id="question"></p>
+            <p id="question">Loading question...</p>
             <ul id="answer-options">
-                <!-- Answer options will go here -->
+                <!-- Answer options will be dynamically generated -->
             </ul>
-            <!-- Display correct answer -->
-            <div id="result"></div>
         </div>
 
-        <button id="next-button" onclick="nextQuestion()" disabled>Next Question</button>
+        <div id="feedback-container"></div>
+
+        <button id="next-button" onclick="nextQuestion()" style="display: none;">Next Question</button>
     </div>
 
     <script src="game.js"></script>
