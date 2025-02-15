@@ -1,124 +1,54 @@
-/* styles.css */
 body {
-    font-family: 'Arial', sans-serif;
-    background: url('https://n4sshh.github.io/Nasshh/web-development-concept-in-word-tag-cloud-on-black-background-CY2BHT.jpg') no-repeat center center fixed;
-    background-size: cover;
-    backdrop-filter: blur(5px); /* Add a blur effect to the background */
-    color: white;
+    font-family: Arial, sans-serif;
+    background-color: #f4e27d; /* Softer yellow */
+    color: #f0f0f0; /* Softer white */
     text-align: center;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Main Game Container */
-.game-container {
-    width: 80%;
-    max-width: 900px;
-    margin: 30px auto;
-    background: rgba(45, 45, 45, 0.8); /* Slight transparency for the background */
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    animation: fadeIn 1s ease-in-out;
-}
-
-/* Game Header */
-h1 {
-    font-size: 40px;
-    font-family: 'Impact', sans-serif;
-    color: white; /* White text color */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Black shadow for better contrast */
-    margin-bottom: 20px;
-}
-
-/* Scoreboard */
-#scoreboard {
-    font-size: 24px;
-    color: white;
-    font-weight: bold;
-    margin-bottom: 40px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-}
-
-#scoreboard p {
-    font-size: 26px;
-}
-
-/* Question Container */
-#question-container {
-    margin-bottom: 40px;
     padding: 20px;
-    background: #34495e;
+}
+
+h1 {
+    color: #f0f0f0; /* Soft white */
+    text-shadow: 2px 2px 5px black;
+}
+
+#question-container {
+    background-color: rgba(0, 0, 0, 0.6); /* Slight transparency for contrast */
+    backdrop-filter: blur(5px); /* Slight blur */
+    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    width: 60%;
+    margin: auto;
 }
 
-/* Question text */
-#question {
-    color: white; /* White text color */
-    font-size: 28px;
-    font-weight: bold;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Black shadow */
-}
-
-/* Answer Options */
-#answer-options {
-    list-style-type: none;
+ul {
+    list-style: none;
     padding: 0;
-    margin-top: 20px;
 }
 
-#answer-options li {
-    background-color: #2980b9;
-    margin: 15px 0;
-    padding: 15px;
-    border-radius: 8px;
-    font-size: 20px;
+li {
+    background-color: #333;
+    color: #f0f0f0; /* Softer white */
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
-#answer-options li:hover {
-    background-color: #3498db;
-    transform: scale(1.05);
+li:hover {
+    background-color: #555;
 }
 
-#answer-options li:active {
-    background-color: #1abc9c;
-}
-
-/* Next Question Button */
 #next-button {
-    padding: 15px 30px;
-    background-color: #e74c3c;
-    color: white;
-    font-size: 18px;
+    background-color: #ffcc00;
+    color: black;
+    padding: 10px 20px;
     border: none;
-    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-#next-button:hover {
-    background-color: #c0392b;
-    transform: scale(1.05);
+    margin-top: 10px;
+    border-radius: 5px;
 }
 
 #next-button:disabled {
-    background-color: #7f8c8d;
+    background-color: #ddd;
     cursor: not-allowed;
-}
-
-/* Animation */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
