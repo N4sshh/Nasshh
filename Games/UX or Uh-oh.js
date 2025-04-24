@@ -3,7 +3,7 @@ let imagesShown = 0;  // Counter to track how many images have been shown
 let feedbackShown = false; // Flag to track if the feedback has already been shown
 
 const images = [
-    "https://n4sshh.github.io/EXP/Images/Guimaras%2021.jpg",
+    "https://n4sshh.github.io/EXP/Images/guimaras.png",
     "https://n4sshh.github.io/EXP/Images/tresha.png",
     "https://n4sshh.github.io/EXP/Images/nash.png",
     "https://n4sshh.github.io/EXP/Images/radin.png",
