@@ -1,99 +1,81 @@
-let currentImage = 0;
-let imagesShown = 0;
-let feedbackShown = false;
-let score = 0;
+const cardData = [
+    { pair: 1, content: "<h1>" },
+    { pair: 1, content: "HTML Heading" },
 
-const images = shuffleArray([
-    { url: "https://n4sshh.github.io/EXP/Images/guimaras.png", isGood: true },
-    { url: "https://n4sshh.github.io/EXP/Images/tresha.png", isGood: false },
-    { url: "https://n4sshh.github.io/EXP/Images/nash.png", isGood: true },
-    { url: "https://n4sshh.github.io/EXP/Images/radin.png", isGood: false },
-    { url: "https://n4sshh.github.io/EXP/Images/mypage.png", isGood: true },
-    { url: "https://i.imgur.com/yW2W9SC.png", isGood: false },
-    { url: "https://i.imgur.com/B5H8JfL.png", isGood: true },
-    { url: "https://i.imgur.com/9UdspKn.png", isGood: false },
-    { url: "https://i.imgur.com/rZMC0Kv.png", isGood: true }
-]);
+    { pair: 2, content: "<p>" },
+    { pair: 2, content: "HTML Paragraph" },
 
-document.getElementById('screenshot').src = images[currentImage].url;
+    { pair: 3, content: "color: red;" },
+    { pair: 3, content: "CSS Color Property" },
 
-document.getElementById('uxButton').addEventListener('click', () => handleAnswer(true));
-document.getElementById('uhOhButton').addEventListener('click', () => handleAnswer(false));
+    { pair: 4, content: "font-size: 16px;" },
+    { pair: 4, content: "CSS Font Size Property" },
 
-function handleAnswer(userThinksGood) {
-    const actualGood = images[currentImage].isGood;
-    const result = document.getElementById('result');
+    { pair: 5, content: "border: 1px solid black;" },
+    { pair: 5, content: "CSS Border Property" },
 
-    if (userThinksGood === actualGood) {
-        result.textContent = "✅ Correct!";
-        result.style.color = "green";
-        score++;
-    } else {
-        result.textContent = "❌ Wrong!";
-        result.style.color = "red";
+    { pair: 6, content: "<div>" },
+    { pair: 6, content: "HTML Div Element" },
+
+    { pair: 7, content: "class='container'" },
+    { pair: 7, content: "HTML Class Attribute" },
+
+    { pair: 8, content: "background-color: blue;" },
+    { pair: 8, content: "CSS Background Color" },
+
+    { pair: 9, content: "<img src='image.jpg' />" },
+    { pair: 9, content: "HTML Image Tag" },
+
+    { pair: 10, content: "display: block;" },
+    { pair: 10, content: "CSS Display Property" }
+];
+
+let gameBoard = document.getElementById("gameBoard");
+let flippedCards = [];
+let matchedPairs = 0;
+
+function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+}
+
+function createCards() {
+    shuffle(cardData).forEach((item, index) => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.dataset.pair = item.pair;
+        card.dataset.index = index;
+        card.textContent = "❓";
+        card.addEventListener("click", () => flipCard(card, item.content));
+        gameBoard.appendChild(card);
+    });
+}
+
+function flipCard(card, content) {
+    if (card.classList.contains("matched") || flippedCards.includes(card)) return;
+
+    card.textContent = content;
+    card.classList.add("flipped");
+    flippedCards.push(card);
+
+    if (flippedCards.length === 2) {
+        const [card1, card2] = flippedCards;
+        if (card1.dataset.pair === card2.dataset.pair && card1 !== card2) {
+            card1.classList.add("matched");
+            card2.classList.add("matched");
+            matchedPairs++;
+            if (matchedPairs === cardData.length / 2) {
+                setTimeout(() => alert("🎉 You matched all pairs!"), 300);
+            }
+        } else {
+            setTimeout(() => {
+                card1.textContent = "❓";
+                card2.textContent = "❓";
+                card1.classList.remove("flipped");
+                card2.classList.remove("flipped");
+            }, 800);
+        }
+        flippedCards = [];
     }
-
-    const explanation = document.createElement("p");
-    explanation.textContent = actualGood ? "This is a good UX design." : "This has poor UX practices.";
-    result.appendChild(explanation);
-
-    document.getElementById('score').textContent = `Score: ${score}/${images.length}`;
-
-    setTimeout(() => {
-        result.innerHTML = "";
-        loadNextImage();
-    }, 2500);
 }
 
-function loadNextImage() {
-    currentImage++;
-    imagesShown++;
-
-    if (currentImage >= images.length) {
-        document.getElementById('screenshot').style.display = "none";
-        document.querySelector('.buttons').style.display = "none";
-        document.getElementById('result').textContent = `🎉 Game over! Final score: ${score}/${images.length}`;
-        setTimeout(askForFeedback, 2000);
-        return;
-    }
-
-    const screenshot = document.getElementById('screenshot');
-    screenshot.src = images[currentImage].url;
-    screenshot.classList.remove("fade");
-    void screenshot.offsetWidth; // Trigger reflow
-    screenshot.classList.add("fade");
-}
-
-function askForFeedback() {
-    if (document.getElementById('feedbackContainer')) return;
-
-    const container = document.createElement('div');
-    container.id = 'feedbackContainer';
-    container.innerHTML = `
-        <div class="feedback-container">
-            <p>Do you think this game is helpful for learning UX principles?</p>
-            <button class="button" id="goodButton">Yes</button>
-            <button class="button" id="badButton">Needs Improvement</button>
-            <button class="button" id="retryButton">Retry</button>
-        </div>
-    `;
-    document.querySelector('.container').appendChild(container);
-
-    document.getElementById('goodButton').onclick = () => {
-        alert("Thanks for your feedback!");
-        container.remove();
-    };
-
-    document.getElementById('badButton').onclick = () => {
-        alert("Thanks! We'll improve it!");
-        container.remove();
-    };
-
-    document.getElementById('retryButton').onclick = () => {
-        location.reload();
-    };
-}
-
-function shuffleArray(arr) {
-    return arr.sort(() => Math.random() - 0.5);
-}
+createCards();
