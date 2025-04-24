@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>UX or Uh-Oh</title>
-  <link rel="stylesheet" href="UX or Uh-Oh.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX or Uh-Oh?!</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <h1>UX or Uh-Oh?</h1>
-    <p class="instructions">Look at the screenshot and decide if it's good UX or not.</p>
-    <img id="screenshot" class="screenshot" src="" alt="UX Screenshot" />
-    <div class="buttons">
-      <button class="button" id="uxButton">UX</button>
-      <button class="button" id="uhOhButton">Uh-Oh</button>
+    <div class="container">
+        <h1>UX or Uh-Oh?!</h1>
+        <p class="instructions">Click on "Good UX" or "Uh-Oh!" to identify the design quality of the website shown below.</p>
+
+        <div class="image-container">
+            <img id="screenshot" class="screenshot fade" src="" alt="Website Screenshot">
+        </div>
+
+        <p id="result"></p>
+        <p id="score">Score: 0/0</p>
+
+        <div class="buttons">
+            <button id="uxButton" class="button">Good UX</button>
+            <button id="uhOhButton" class="button">Uh-Oh!</button>
+        </div>
     </div>
-    <p id="result"></p>
-    <p id="progress"></p>
-  </div>
-  <script src="UX or Uh-Oh.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
