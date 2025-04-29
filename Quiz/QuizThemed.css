@@ -1,0 +1,264 @@
+/* Simplified Tech/Programming Themed CSS */
+:root {
+    --primary: #2d3748;
+    --secondary: #4a5568;
+    --accent: #4299e1;
+    --accent-dark: #3182ce;
+    --text: #e2e8f0;
+    --text-secondary: #a0aec0;
+    --background: #1a202c;
+    --card-bg: #2d3748;
+    --correct: #48bb78;
+    --incorrect: #f56565;
+    --code-bg: #4a5568;
+}
+
+body {
+    font-family: 'Fira Code', 'Consolas', 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap');
+
+.quiz-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 30px auto 0 auto !important; /* Added !important to force the margin */
+    padding: 2rem;
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid var(--accent);
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--accent);
+    margin: 30px 0 1.5rem 0 !important; /* Added !important to force the margin */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+h1::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--accent);
+    margin: 10px auto;
+}
+
+.question {
+    margin-bottom: 1.8rem;
+    padding: 1.2rem;
+    background-color: rgba(66, 153, 225, 0.1);
+    border-radius: 6px;
+    border-left: 3px solid var(--accent);
+}
+
+.question::before {
+    content: "//";
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    color: var(--accent);
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.question p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+    font-weight: 500;
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+    top: 3px;
+    transition: all 0.2s ease;
+}
+
+input[type="radio"]:checked {
+    background-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--card-bg), 0 0 0 4px var(--accent);
+}
+
+input[type="radio"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--card-bg), 0 0 0 4px var(--accent-dark);
+}
+
+label {
+    font-size: 1rem;
+    margin-left: 8px;
+    color: var(--text);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+label:hover {
+    color: var(--accent);
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    background-color: var(--code-bg);
+    border: 1px solid var(--secondary);
+    border-radius: 4px;
+    color: var(--text);
+    font-family: 'Fira Code', monospace;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.5);
+}
+
+button {
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 1rem 0;
+    font-family: 'Fira Code', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled {
+    background-color: var(--secondary);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+#score-result {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    border-left: 4px solid var(--correct);
+}
+
+#score-result h2 {
+    color: var(--correct);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+#score-result p {
+    font-size: 1.2rem;
+    color: var(--text);
+    margin: 0.5rem 0;
+}
+
+.navigation-button {
+    font-size: 1rem;
+    margin: 0.5rem;
+    padding: 0.6rem 1.2rem;
+}
+
+.quiz-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background-color: var(--accent);
+    border-radius: 8px 8px 0 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .quiz-container {
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .question p {
+        font-size: 1rem;
+    }
+
+    label {
+        font-size: 0.9rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.5rem;
+    }
+
+    #score-result h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .quiz-container {
+        max-width: 900px;
+    }
+}
+
+/* Animation for correct/incorrect answers */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.correct-answer {
+    animation: pulse 0.5s ease;
+    color: var(--correct);
+}
+
+.incorrect-answer {
+    color: var(--incorrect);
+}
+
+/* Code block style for questions */
+.code-block {
+    background-color: var(--code-bg);
+    padding: 1rem;
+    border-radius: 4px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+}
