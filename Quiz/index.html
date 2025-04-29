@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UX Scenario Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Updated to EmailJS v3 SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // Initialize EmailJS with your public key
+        (function(){
+            emailjs.init("0bR5qvHli8_67NWOZ");
+        })();
+
+        function sendEmail() {
+            var gmail = document.getElementById("gmail").value.trim();
+            
+            // Validate email
+            if (!gmail || !gmail.endsWith("@gmail.com")) {
+                alert("Please enter a valid Gmail address.");
+                return;
+            }
+
+            // Get form data
+            var formData = new FormData(document.getElementById("quiz-form"));
+            var answers = "UX Quiz Results:\n\n";
+            var score = 0;
+
+            // Process answers and calculate score
+            for (let i = 1; i <= 15; i++) {
+                if (i <= 14) {
+                    const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                    if (selected && selected.value === "1") score++;
+                    answers += `Q${i}: ${selected ? selected.nextElementSibling.textContent : 'Not answered'}\n`;
+                } else {
+                    answers += `Q15: ${document.getElementById("q15").value}\n`;
+                }
+            }
+
+            // Add score to results
+            answers += `\nFinal Score: ${score}/15`;
+
+            // Prepare email parameters
+            var emailParams = {
+                to_email: gmail,
+                subject: "Your UX Quiz Results",
+                message: answers,
+                from_name: "UX Quiz Bot",
+                reply_to: "noreply@uxquiz.com"
+            };
+
+            // Show loading state
+            const submitBtn = document.querySelector('button[type="button"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Sending...";
+
+            // Send email (REPLACE WITH YOUR ACTUAL SERVICE AND TEMPLATE IDs)
+            emailjs.send("service_56untwr", "template_prp1jw9", emailParams)
+                .then(function(response) {
+                    document.getElementById("quiz-form").style.display = "none";
+                    document.getElementById("score-result").style.display = "block";
+                    document.getElementById("score-result").innerHTML = `
+                        <h2>Thank you!</h2>
+                        <p>Your score: ${score}/15</p>
+                        <p>Results sent to ${gmail}</p>
+                    `;
+                })
+                .catch(function(error) {
+                    console.error("Email error:", error);
+                    alert("Failed to send results. Please try again later.");
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "Submit";
+                });
+        }
+    </script>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>UX Scenario Quiz (Interactive)</h1>
+        <p>Answer the questions below based on your knowledge of UX design principles.</p>
+
+        <form id="quiz-form">
+            <div class="question">
+                <p>1. You open a webpage, and the text is too small to read comfortably. What UX principle was violated?</p>
+                <input type="radio" id="q1a" name="q1" value="1"><label for="q1a">Accessibility</label><br>
+                <input type="radio" id="q1b" name="q1" value="0"><label for="q1b">Consistency</label><br>
+                <input type="radio" id="q1c" name="q1" value="0"><label for="q1c">Usability</label><br>
+                <input type="radio" id="q1d" name="q1" value="0"><label for="q1d">Affordance</label><br>
+            </div>
+
+            <div class="question">
+                <p>2. A button on a website looks like a link but does not function as one when clicked. What principle is violated here?</p>
+                <input type="radio" id="q2a" name="q2" value="0"><label for="q2a">Feedback</label><br>
+                <input type="radio" id="q2b" name="q2" value="1"><label for="q2b">Affordance</label><br>
+                <input type="radio" id="q2c" name="q2" value="0"><label for="q2c">Accessibility</label><br>
+                <input type="radio" id="q2d" name="q2" value="0"><label for="q2d">Navigation</label><br>
+            </div>
+
+            <div class="question">
+                <p>3. A user tries to submit a form but gets no confirmation or error message. What UX principle is missing?</p>
+                <input type="radio" id="q3a" name="q3" value="1"><label for="q3a">Visibility of system status</label><br>
+                <input type="radio" id="q3b" name="q3" value="0"><label for="q3b">Consistency</label><br>
+                <input type="radio" id="q3c" name="q3" value="0"><label for="q3c">Error prevention</label><br>
+                <input type="radio" id="q3d" name="q3" value="0"><label for="q3d">Flexibility and efficiency of use</label><br>
+            </div>
+
+            <div class="question">
+                <p>4. You notice a confusing dropdown menu that doesn't display its full options unless you hover over it. What is this an example of?</p>
+                <input type="radio" id="q4a" name="q4" value="1"><label for="q4a">Poor navigation</label><br>
+                <input type="radio" id="q4b" name="q4" value="0"><label for="q4b">Poor affordance</label><br>
+                <input type="radio" id="q4c" name="q4" value="0"><label for="q4c">Poor visual hierarchy</label><br>
+                <input type="radio" id="q4d" name="q4" value="0"><label for="q4d">Lack of feedback</label><br>
+            </div>
+
+            <div class="question">
+                <p>5. A form asks for the same information multiple times across different sections. How can this be improved in terms of UX?</p>
+                <input type="radio" id="q5a" name="q5" value="1"><label for="q5a">Avoid repetitive information requests</label><br>
+                <input type="radio" id="q5b" name="q5" value="0"><label for="q5b">Use more prominent call-to-action buttons</label><br>
+                <input type="radio" id="q5c" name="q5" value="0"><label for="q5c">Simplify the form’s design</label><br>
+                <input type="radio" id="q5d" name="q5" value="0"><label for="q5d">Include more explanatory text</label><br>
+            </div>
+
+            <div class="question">
+                <p>6. After filling out an online form, the user accidentally hits the "Submit" button multiple times. What UX principle could prevent this?</p>
+                <input type="radio" id="q6a" name="q6" value="0"><label for="q6a">Flexibility and efficiency of use</label><br>
+                <input type="radio" id="q6b" name="q6" value="1"><label for="q6b">Error recovery</label><br>
+                <input type="radio" id="q6c" name="q6" value="0"><label for="q6c">Consistency</label><br>
+                <input type="radio" id="q6d" name="q6" value="0"><label for="q6d">Aesthetic and minimalist design</label><br>
+            </div>
+
+            <div class="question">
+                <p>7. On a website, the contrast between text and background is too low. What is violated?</p>
+                <input type="radio" id="q7a" name="q7" value="1"><label for="q7a">Accessibility</label><br>
+                <input type="radio" id="q7b" name="q7" value="0"><label for="q7b">Feedback</label><br>
+                <input type="radio" id="q7c" name="q7" value="0"><label for="q7c">Aesthetic design</label><br>
+                <input type="radio" id="q7d" name="q7" value="0"><label for="q7d">Affordance</label><br>
+            </div>
+
+            <div class="question">
+                <p>8. A mobile app interface has buttons that are too close together, making it hard for users to select the right option. What is this an example of?</p>
+                <input type="radio" id="q8a" name="q8" value="1"><label for="q8a">Poor ergonomics</label><br>
+                <input type="radio" id="q8b" name="q8" value="0"><label for="q8b">Poor visual hierarchy</label><br>
+                <input type="radio" id="q8c" name="q8" value="0"><label for="q8c">Poor feedback</label><br>
+                <input type="radio" id="q8d" name="q8" value="0"><label for="q8d">Lack of consistency</label><br>
+            </div>
+
+            <div class="question">
+                <p>9. The website uses too many different fonts and colors, making it look disorganized. What UX principle is violated?</p>
+                <input type="radio" id="q9a" name="q9" value="1"><label for="q9a">Aesthetic and minimalist design</label><br>
+                <input type="radio" id="q9b" name="q9" value="0"><label for="q9b">Consistency</label><br>
+                <input type="radio" id="q9c" name="q9" value="0"><label for="q9c">Affordance</label><br>
+                <input type="radio" id="q9d" name="q9" value="0"><label for="q9d">Feedback</label><br>
+            </div>
+
+            <div class="question">
+                <p>10. A website’s navigation menu becomes cluttered and hard to use after adding too many links. How could you improve this UX issue?</p>
+                <input type="radio" id="q10a" name="q10" value="1"><label for="q10a">Organize links into categories</label><br>
+                <input type="radio" id="q10b" name="q10" value="0"><label for="q10b">Use a hamburger menu for better space efficiency</label><br>
+                <input type="radio" id="q10c" name="q10" value="0"><label for="q10c">Simplify the content on each page</label><br>
+                <input type="radio" id="q10d" name="q10" value="0"><label for="q10d">Include more visual elements to draw attention</label><br>
+            </div>
+
+            <div class="question">
+                <p>11. When a user hovers over a link, the cursor changes to indicate it's clickable. What UX principle is being followed?</p>
+                <input type="radio" id="q11a" name="q11" value="1"><label for="q11a">Affordance</label><br>
+                <input type="radio" id="q11b" name="q11" value="0"><label for="q11b">Feedback</label><br>
+                <input type="radio" id="q11c" name="q11" value="0"><label for="q11c">Usability</label><br>
+                <input type="radio" id="q11d" name="q11" value="0"><label for="q11d">Visibility of system status</label><br>
+            </div>
+
+            <div class="question">
+                <p>12. The mobile version of a website works well, but the desktop version is slow to load. What UX principle is affected?</p>
+                <input type="radio" id="q12a" name="q12" value="1"><label for="q12a">Performance</label><br>
+                <input type="radio" id="q12b" name="q12" value="0"><label for="q12b">Navigation</label><br>
+                <input type="radio" id="q12c" name="q12" value="0"><label for="q12c">Consistency</label><br>
+                <input type="radio" id="q12d" name="q12" value="0"><label for="q12d">Error prevention</label><br>
+            </div>
+
+            <div class="question">
+                <p>13. A user tries to enter a password, but the website does not give a clear indication of the password requirements. What is missing here?</p>
+                <input type="radio" id="q13a" name="q13" value="0"><label for="q13a">Feedback</label><br>
+                <input type="radio" id="q13b" name="q13" value="1"><label for="q13b">Error prevention</label><br>
+                <input type="radio" id="q13c" name="q13" value="0"><label for="q13c">Affordance</label><br>
+                <input type="radio" id="q13d" name="q13" value="0"><label for="q13d">Visibility of system status</label><br>
+            </div>
+
+            <div class="question">
+                <p>14. You’re filling out a long form and the website provides a progress bar showing how much you’ve completed. Which principle does this demonstrate?</p>
+                <input type="radio" id="q14a" name="q14" value="1"><label for="q14a">Visibility of system status</label><br>
+                <input type="radio" id="q14b" name="q14" value="0"><label for="q14b">Flexibility and efficiency of use</label><br>
+                <input type="radio" id="q14c" name="q14" value="0"><label for="q14c">Aesthetic design</label><br>
+                <input type="radio" id="q14d" name="q14" value="0"><label for="q14d">Error recovery</label><br>
+            </div>
+
+            <div class="question">
+                <p>15. After completing an online purchase, you are shown a confirmation page with all the details of your order. What UX principle is this an example of?</p>
+                <input type="text" id="q15" name="q15"><br>
+            </div>
+
+            <div class="question">
+                <p>Enter your Gmail address to receive the quiz results:</p>
+                <input type="email" id="gmail" name="gmail" placeholder="example@gmail.com" required><br>
+            </div>
+        </form>
+
+        <div id="score-result" style="display: none;">
+            <h2>Thank you for completing the quiz!</h2>
+            <p>Your results have been sent to your email address.</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
