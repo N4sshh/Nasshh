@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>You're Beautiful</title>
   <style>
+    /* ✅ Reset and Box Sizing (Practical Application) */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    /* ✅ Flexible Layout & Practical Application */
     body {
       display: flex;
       justify-content: center;
@@ -21,35 +23,39 @@
       padding: 1rem;
     }
 
+    /* ✅ Flexible Layout (uses max-width + responsive size) */
     .player {
       position: relative;
-      width: 100%;
-      max-width: 350px;
+      width: 100%;             /* Flexible width */
+      max-width: 350px;        /* Prevents overflow */
       background: #f1f3f4;
       box-shadow: 0 50px 80px rgba(0, 0, 0, 0.5);
       border-radius: 10px;
       overflow: hidden;
     }
 
+    /* ✅ Practical Application (album art container) */
     .imgBox {
       width: 100%;
       height: auto;
     }
 
+    /* ✅ Responsive Images */
     .imgBox img {
-      width: 100%;
-      height: auto;
+      width: 100%;             /* Responsive width */
+      height: auto;            /* Keeps aspect ratio */
       display: block;
-      object-fit: cover;
+      object-fit: cover;       /* Ensures proper cropping */
     }
 
+    /* ✅ Practical Application (audio player styling) */
     audio {
       width: 100%;
       outline: none;
       display: block;
     }
 
-    /* ✅ Media Query for smaller screens */
+    /* ✅ Media Queries: Mobile phones */
     @media (max-width: 500px) {
       .player {
         max-width: 90%;
@@ -60,9 +66,31 @@
         text-align: center;
       }
     }
+
+    /* ✅ Media Queries: Tablets */
+    @media (min-width: 501px) and (max-width: 768px) {
+      .player {
+        max-width: 400px;
+      }
+    }
+
+    /* ✅ Media Queries: Small desktops */
+    @media (min-width: 769px) and (max-width: 1200px) {
+      .player {
+        max-width: 500px;
+      }
+    }
+
+    /* ✅ Media Queries: Large desktops */
+    @media (min-width: 1201px) {
+      .player {
+        max-width: 600px;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- ✅ Practical Application: Music Player Interface -->
   <div class="player">
     <div class="imgBox">
       <img src="lendsay you're beautiful.jpg" alt="Album Art" />
