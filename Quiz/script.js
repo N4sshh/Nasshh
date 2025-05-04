@@ -148,8 +148,9 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         {
             question: "15. What is one of the key takeaways about UI/UX design mentioned in the PDF's conclusion?",
-            isTextAnswer: true
-        }
+            isTextAnswer: true,
+            keywords: ["user-centered", "usability", "accessibility", "engaging", "trust", "customer satisfaction", "growth"]
+        }        
     ];
 
     // Quiz State
@@ -288,10 +289,19 @@ document.addEventListener("DOMContentLoaded", function () {
         score = 0;
         questions.forEach((q, index) => {
             if (q.isTextAnswer) {
+                // For text answers, check if the answer includes any of the keywords
                 const answer = userAnswers[index] ? userAnswers[index].toLowerCase() : '';
-                if (answer.includes('user-centered') || answer.includes('usability') || 
-                    answer.includes('accessibility') || answer.includes('engagement')) {
-                    score++;
+                if (q.keywords) { // If the question has specific keywords
+                    const hasKeyword = q.keywords.some(keyword => 
+                        answer.includes(keyword.toLowerCase())
+                    );
+                    if (hasKeyword) score++;
+                } else {
+                    // Fallback for other text answers (if any)
+                    if (answer.includes('user-centered') || answer.includes('usability') || 
+                        answer.includes('accessibility') || answer.includes('engagement')) {
+                        score++;
+                    }
                 }
             } else {
                 const selectedOptionIndex = userAnswers[index];
@@ -302,7 +312,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         return score;
     }
-
     function submitQuiz() {
         const email = gmailInput.value.trim();
         
