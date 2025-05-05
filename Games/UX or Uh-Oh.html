@@ -3,24 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UX or Uh-Oh?!</title>
+    <title>UX or Uh-Oh?! - Test Your UX Design Knowledge</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👁️</text></svg>">
 </head>
 <body>
     <div class="container">
-        <h1>UX or Uh-Oh?!</h1>
-        <p class="instructions">Click on "Good UX" or "Uh-Oh!" to identify the design quality of the website shown below.</p>
+        <header>
+            <h1>UX or Uh-Oh?!</h1>
+            <p class="subtitle">Test your UX design intuition</p>
+        </header>
 
-        <div class="image-container">
-            <img id="screenshot" class="screenshot fade" src="" alt="Website Screenshot">
+        <div class="game-area">
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+                <span id="progressText">1/15</span>
+            </div>
+
+            <p class="instructions">Is this good UX design or does it have problems? Click your answer below.</p>
+
+            <div class="image-container">
+                <img id="screenshot" class="screenshot fade" src="" alt="Website Screenshot">
+                <div class="image-overlay" id="imageOverlay"></div>
+            </div>
+
+            <div class="result-container">
+                <p id="result"></p>
+                <p id="explanation" class="explanation"></p>
+            </div>
+
+            <div class="score-container">
+                <p id="score">Score: <span>0</span>/<span>0</span></p>
+            </div>
+
+            <div class="buttons">
+                <button id="uxButton" class="button good-ux">
+                    <span>👍</span> Good UX
+                </button>
+                <button id="uhOhButton" class="button uh-oh">
+                    <span>👎</span> Uh-Oh!
+                </button>
+            </div>
         </div>
+    </div>
 
-        <p id="result"></p>
-        <p id="score">Score: 0/0</p>
+    <div class="modal" id="welcomeModal">
+        <div class="modal-content">
+            <h2>Welcome to UX or Uh-Oh?!</h2>
+            <p>Test your ability to identify good and poor UX design practices.</p>
+            <p>You'll see website screenshots - decide if they demonstrate good UX principles or have problems.</p>
+            <button id="startGame" class="button modal-button">Start Game</button>
+        </div>
+    </div>
 
-        <div class="buttons">
-            <button id="uxButton" class="button">Good UX</button>
-            <button id="uhOhButton" class="button">Uh-Oh!</button>
+    <div class="modal" id="feedbackModal">
+        <div class="modal-content">
+            <h2>Game Complete!</h2>
+            <p id="finalScore"></p>
+            <div class="feedback-options">
+                <p>Was this game helpful for learning UX principles?</p>
+                <button class="button feedback-button" id="goodButton">Yes, great!</button>
+                <button class="button feedback-button" id="badButton">Needs improvement</button>
+                <button class="button feedback-button" id="retryButton">Play Again</button>
+            </div>
         </div>
     </div>
 
