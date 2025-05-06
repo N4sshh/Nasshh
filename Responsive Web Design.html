@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Web Design</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(to right, #F56217, #0B486B);
+      font-family: Arial, sans-serif;
+      padding: 1rem;
+    }
+
+    .player {
+      position: relative;
+      width: 100%;
+      max-width: 350px;
+      background: #f1f3f4;
+      box-shadow: 0 50px 80px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      padding-bottom: 1rem;
+    }
+
+    .imgBox {
+      width: 100%;
+      height: auto;
+    }
+
+    .imgBox img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      transition: opacity 0.5s ease;
+    }
+
+    .text-box {
+      padding: 1rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .highlight {
+      background-color: yellow; /* Highlight color */
+      font-weight: bold;
+      padding: 0.2rem;
+      border-radius: 5px;
+    }
+
+    .next-button {
+      background-color: #0B486B;
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    .next-button:hover {
+      background-color: #072F40;
+    }
+
+    @media (max-width: 500px) {
+      .player {
+        max-width: 90%;
+      }
+
+      body {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (min-width: 501px) and (max-width: 768px) {
+      .player {
+        max-width: 400px;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1200px) {
+      .player {
+        max-width: 500px;
+      }
+    }
+
+    @media (min-width: 1201px) {
+      .player {
+        max-width: 600px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="player">
+    <div class="imgBox">
+      <!-- Initial image: Responsive Web Design -->
+      <img id="imageDisplay" src="https://n4sshh.github.io/Nasshh/responsive%20web%20design.jpg" alt="Responsive Web Design" />
+    </div>
+    <div class="text-box" id="textDisplay">
+      <!-- Initial text: Responsive Web Design -->
+      Responsive Web Design
+    </div>
+    <button class="next-button" onclick="showNext()">Next</button>
+  </div>
+
+  <script>
+    const topics = [
+      { image: "https://n4sshh.github.io/Nasshh/responsive%20web%20design.jpg", text: "Responsive Web Design" },
+      { image: "https://n4sshh.github.io/Nasshh/media.jpg", text: '✅ <span class="highlight">Media Queries</span>: Adapts layout to screen sizes.' },
+      { image: "https://n4sshh.github.io/Nasshh/flexible%20layout.png", text: '✅ <span class="highlight">Flexible Layouts</span>: Uses flexbox and relative units.' },
+      { image: "https://n4sshh.github.io/Nasshh/responsive%20images.png", text: '✅ <span class="highlight">Responsive Images</span>: Scales with containers properly.' },
+      { image: "https://n4sshh.github.io/Nasshh/practical%20aplications.png", text: '✅ <span class="highlight">Practical Applications</span>: Real-life UI/UX layout solutions.' }
+    ];
+
+    let currentIndex = 0;  // Start at the first topic
+
+    function showNext() {
+      // Move to the next topic, looping back to the first after the last one
+      currentIndex = (currentIndex + 1) % topics.length;
+      // Update the image and text based on the current topic
+      document.getElementById("imageDisplay").src = topics[currentIndex].image;
+      document.getElementById("textDisplay").innerHTML = topics[currentIndex].text; // Use innerHTML to preserve HTML tags
+    }
+  </script>
+</body>
+</html>
