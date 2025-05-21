@@ -5,12 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Code Match Game</title>
   <link rel="stylesheet" href="Code_Match.css" />
+  <style>
+    /* Added basic style for timer and moves display */
+    .info-panel {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
   <h1>🧠 Code Match</h1>
+  
+  <div class="info-panel">
+    <span id="timer">⏱ Time: 0s</span>
+    <span id="moves">🧮 Moves: 0</span>
+  </div>
+  
   <div class="game-board-container">
     <div id="gameBoard" class="game-board"></div>
   </div>  
-    <script src="Code_Match.js"></script>
+
+  <script src="Code_Match.js"></script>
 </body>
 </html>
