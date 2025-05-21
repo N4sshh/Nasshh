@@ -34,6 +34,11 @@ let gameBoard = document.getElementById("gameBoard");
 let flippedCards = [];
 let matchedPairs = 0;
 
+let moves = 0;
+let timer;
+let seconds = 0;
+let timerStarted = false;
+
 function shuffle(array) {
     return array.sort(() => Math.random() - 0.5);
 }
@@ -50,21 +55,38 @@ function createCards() {
     });
 }
 
+function startTimer() {
+    timer = setInterval(() => {
+        seconds++;
+        document.getElementById("timer").textContent = `⏱ Time: ${seconds}s`;
+    }, 1000);
+}
+
 function flipCard(card, content) {
     if (card.classList.contains("matched") || flippedCards.includes(card)) return;
+
+    // Start timer on first flip
+    if (!timerStarted) {
+        startTimer();
+        timerStarted = true;
+    }
 
     card.textContent = content;
     card.classList.add("flipped");
     flippedCards.push(card);
 
     if (flippedCards.length === 2) {
+        moves++;
+        document.getElementById("moves").textContent = `🧮 Moves: ${moves}`;
+
         const [card1, card2] = flippedCards;
         if (card1.dataset.pair === card2.dataset.pair && card1 !== card2) {
             card1.classList.add("matched");
             card2.classList.add("matched");
             matchedPairs++;
             if (matchedPairs === cardData.length / 2) {
-                setTimeout(() => alert("🎉 You matched all pairs!"), 300);
+                clearInterval(timer);
+                setTimeout(() => alert(`🎉 You matched all pairs in ${moves} moves and ${seconds} seconds!`), 300);
             }
         } else {
             setTimeout(() => {
