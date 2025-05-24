@@ -56,20 +56,17 @@ function startGame() {
     loadCurrentImage();
 }
 
-// Load current image (optimized for faster loading)
+// Load current image with preloading for faster transitions
 function loadCurrentImage() {
     if (!gameStarted) return;
     
-    // Pre-load next image while current one is showing
-    if (currentImage < images.length - 1) {
-        const nextImg = new Image();
-        nextImg.src = images[currentImage + 1].url;
-    }
-    
+    // Fade out current image
     screenshot.style.opacity = '0';
+    
+    // Load and display new image
     screenshot.src = images[currentImage].url;
     
-    // Immediate transition for cached images
+    // Ensure smooth transition if image is already cached
     if (screenshot.complete) {
         screenshot.style.opacity = '1';
     } else {
@@ -77,9 +74,19 @@ function loadCurrentImage() {
             screenshot.style.opacity = '1';
         };
     }
+    
+    // Preload next two images for faster transitions
+    if (currentImage < images.length - 1) {
+        const nextImg1 = new Image();
+        nextImg1.src = images[currentImage + 1].url;
+    }
+    if (currentImage < images.length - 2) {
+        const nextImg2 = new Image();
+        nextImg2.src = images[currentImage + 2].url;
+    }
 }
 
-// Handle user answer (optimized for faster transitions)
+// Handle user answer with optimized transitions
 function handleAnswer(userAnswer) {
     if (!gameStarted) return;
     
@@ -99,30 +106,24 @@ function handleAnswer(userAnswer) {
     explanationEl.textContent = images[currentImage].explanation;
     updateScore();
     
-    // Show image overlay with correct answer
+    // Show overlay with feedback
     imageOverlay.textContent = correctAnswer ? "Good UX" : "Poor UX";
     imageOverlay.style.backgroundColor = correctAnswer ? "rgba(100, 255, 218, 0.8)" : "rgba(255, 95, 126, 0.8)";
     imageOverlay.style.opacity = '1';
     
-    // Faster transition (1.5 seconds total)
     setTimeout(() => {
-        // Fade out feedback (0.3s)
         imageOverlay.style.opacity = '0';
         resultEl.style.opacity = '0';
         explanationEl.style.opacity = '0';
-        
-        // Move to next image immediately after fade starts
+
         setTimeout(() => {
             currentImage++;
             updateProgress();
-            
+
             if (currentImage >= images.length) {
                 endGame();
             } else {
-                // Load next image while fading out
                 loadCurrentImage();
-                
-                // Re-enable buttons immediately
                 resultEl.textContent = "";
                 explanationEl.textContent = "";
                 resultEl.style.opacity = '1';
@@ -130,15 +131,13 @@ function handleAnswer(userAnswer) {
                 uxButton.disabled = false;
                 uhOhButton.disabled = false;
             }
-        }, 300); // Short fade out duration
-    }, 1200); // Show feedback for 1.2 seconds
+        }, 300);
+    }, 1200);
 }
 
 // Update score display
 function updateScore() {
-    const scoreSpans = scoreEl.querySelectorAll('span');
-    scoreSpans[0].textContent = score;
-    scoreSpans[1].textContent = currentImage;
+    scoreEl.innerHTML = `<span>${score}</span> / <span>${images.length}</span>`;
 }
 
 // Update progress bar
@@ -150,31 +149,8 @@ function updateProgress() {
 
 // End the game
 function endGame() {
-    finalScoreEl.textContent = `Your final score: ${score}/${images.length}`;
-    
-    const percentage = Math.round((score / images.length) * 100);
-    let message = "";
-    
-    if (percentage >= 80) message = "Excellent! You have a great eye for UX design!";
-    else if (percentage >= 60) message = "Good job! You understand many UX principles.";
-    else if (percentage >= 40) message = "Not bad! With more practice you'll improve.";
-    else message = "Keep learning! Review UX principles and try again.";
-    
-    finalScoreEl.innerHTML += `<br><small>${message}</small>`;
+    finalScoreEl.innerHTML = `Your final score: ${score}/${images.length}`;
     feedbackModal.classList.add('show');
-    
-    // Setup feedback buttons
-    document.getElementById('goodButton').onclick = () => {
-        feedbackModal.classList.remove('show');
-    };
-    
-    document.getElementById('badButton').onclick = () => {
-        feedbackModal.classList.remove('show');
-    };
-    
-    document.getElementById('retryButton').onclick = () => {
-        location.reload();
-    };
 }
 
 // Shuffle array function
