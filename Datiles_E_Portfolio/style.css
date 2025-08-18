@@ -14,9 +14,8 @@ body {
   scroll-behavior: smooth;
 }
 
-/* Prevent header overlap on section scroll */
 section {
-  scroll-margin-top: 80px; /* keeps header from overlapping */
+  scroll-margin-top: 80px; /* prevents header overlap */
   padding: 3rem 2rem;
   max-width: 900px;
   margin: auto;
@@ -31,7 +30,7 @@ section h1 {
 
 /* HEADER */
 header {
-  background: #1a1a1a; /* softer black */
+  background: #1a1a1a;
   color: #fff;
   padding: 1rem 2rem;
   display: flex;
@@ -59,7 +58,7 @@ header nav a {
   color: #eee;
   text-decoration: none;
   margin-left: 1rem;
-  transition: 0.3s;
+  transition: color 0.3s;
 }
 
 header nav a:hover {
@@ -69,11 +68,11 @@ header nav a:hover {
 /* HERO */
 .hero {
   text-align: center;
-  padding: 4rem 1rem;
+  padding: 5rem 1rem 4rem;
 }
 
 .hero h1 {
-  font-size: 2rem;
+  font-size: 2.25rem;
   margin-bottom: 1rem;
 }
 
@@ -84,7 +83,7 @@ header nav a:hover {
 .hero p {
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
-  color: #bbb; /* softer gray */
+  color: #bbb;
 }
 
 /* ABOUT */
@@ -114,7 +113,7 @@ header nav a:hover {
 }
 
 .skill-card {
-  background: #1c1c1c; /* dark card */
+  background: #1c1c1c;
   padding: 1rem;
   border-radius: .5rem;
   text-align: center;
@@ -137,7 +136,7 @@ header nav a:hover {
   border-radius: .5rem;
   margin-bottom: 1rem;
   box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-  transition: 0.3s;
+  transition: transform 0.3s;
 }
 
 #projects article:hover {
@@ -151,7 +150,6 @@ header nav a:hover {
 }
 
 #projects p {
-  margin-bottom: .5rem;
   color: #ccc;
 }
 
