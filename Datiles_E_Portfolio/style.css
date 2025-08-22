@@ -52,6 +52,11 @@ header .logo {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+header .logo:hover {
+  transform: rotate(360deg);
 }
 
 header nav a {
@@ -103,6 +108,15 @@ header nav a:hover {
 #about p {
   margin-bottom: 1rem;
   color: #ccc;
+  border: 2px solid cyan;
+  padding: 1rem;
+  border-radius: .5rem;
+  transition: 0.3s;
+}
+
+#about p:hover {
+  background: #1c1c1c;
+  color: #eee;
 }
 
 /* SKILLS */
@@ -113,33 +127,36 @@ header nav a:hover {
 }
 
 .skill-card {
-  background: #1c1c1c;
+  border: 2px solid cyan;
+  background: transparent;
   padding: 1rem;
   border-radius: .5rem;
   text-align: center;
   font-weight: 500;
-  color: #eee;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  color: cyan;
   transition: 0.3s;
 }
 
 .skill-card:hover {
   background: cyan;
   color: #111;
-  transform: translateY(-3px);
+  transform: translateY(-5px);
 }
 
 /* PROJECTS */
 #projects article {
-  background: #1c1c1c;
+  border: 2px solid cyan;
+  background: transparent;
+  color: cyan;
   padding: 1.5rem;
   border-radius: .5rem;
   margin-bottom: 1rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-  transition: transform 0.3s;
+  transition: all 0.3s ease;
 }
 
 #projects article:hover {
+  background: #1c1c1c;
+  color: #eee;
   transform: translateY(-3px);
 }
 
@@ -150,7 +167,7 @@ header nav a:hover {
 }
 
 #projects p {
-  color: #ccc;
+  color: inherit;
 }
 
 #projects a {
@@ -175,8 +192,9 @@ header nav a:hover {
 
 #contact .btn {
   display: inline-block;
-  background: cyan;
-  color: #111;
+  border: 2px solid cyan;
+  background: transparent;
+  color: cyan;
   padding: 0.75rem 1.5rem;
   border-radius: .5rem;
   font-weight: 600;
@@ -185,8 +203,8 @@ header nav a:hover {
 }
 
 #contact .btn:hover {
-  background: #00cccc;
-  color: #fff;
+  background: cyan;
+  color: #111;
 }
 
 /* FOOTER */
