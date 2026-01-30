@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | MewBrew</title>
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation (same as index.html) -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <i class="fas fa-cat"></i>
+        <h1>MewBrew</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="menu.html"><i class="fas fa-coffee"></i> Menu</a></li>
+        <li><a href="cats.html"><i class="fas fa-paw"></i> Cats</a></li>
+        <li><a href="booking.html"><i class="fas fa-calendar-alt"></i> Booking</a></li>
+        <li><a href="events.html"><i class="fas fa-gamepad"></i> Events</a></li>
+        <li><a href="shop.html"><i class="fas fa-shopping-bag"></i> Shop</a></li>
+        <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contact Header -->
+  <header class="page-header">
+    <h1>Contact Us</h1>
+    <p>We'd love to hear from you! Get in touch with any questions or feedback.</p>
+  </header>
+
+  <!-- Contact Container -->
+  <main class="contact-container">
+    <!-- Contact Info -->
+    <section class="contact-info">
+      <div class="info-card">
+        <div class="info-icon">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <h3>Visit Us</h3>
+        <p>123 Cat Street, Iloilo City</p>
+        <p>5000 Iloilo, Philippines</p>
+        <a href="#" class="info-link">Get Directions <i class="fas fa-arrow-right"></i></a>
+      </div>
+      
+      <div class="info-card">
+        <div class="info-icon">
+          <i class="fas fa-clock"></i>
+        </div>
+        <h3>Opening Hours</h3>
+        <p><strong>Monday - Sunday:</strong></p>
+        <p>10:00 AM – 9:00 PM</p>
+        <p class="note">Last entry at 8:00 PM</p>
+      </div>
+      
+      <div class="info-card">
+        <div class="info-icon">
+          <i class="fas fa-phone"></i>
+        </div>
+        <h3>Call Us</h3>
+        <p>(033) 123-4567</p>
+        <p>+63 912 345 6789</p>
+        <a href="tel:+6331234567" class="info-link">Call Now <i class="fas fa-phone"></i></a>
+      </div>
+      
+      <div class="info-card">
+        <div class="info-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <h3>Email Us</h3>
+        <p>contact@mewbrew.com</p>
+        <p>adoptions@mewbrew.com</p>
+        <a href="mailto:contact@mewbrew.com" class="info-link">Send Email <i class="fas fa-envelope"></i></a>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form-section">
+      <div class="form-header">
+        <h2><i class="fas fa-comment-dots"></i> Send a Message</h2>
+        <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+      </div>
+      
+      <form class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name"><i class="fas fa-user"></i> Full Name</label>
+            <input type="text" id="name" placeholder="Enter your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+            <input type="email" id="email" placeholder="Enter your email address" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="subject"><i class="fas fa-tag"></i> Subject</label>
+          <select id="subject" required>
+            <option value="" disabled selected>Select a subject</option>
+            <option value="general">General Inquiry</option>
+            <option value="booking">Booking Question</option>
+            <option value="adoption">Adoption Inquiry</option>
+            <option value="feedback">Feedback/Suggestion</option>
+            <option value="partnership">Partnership Opportunity</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="message"><i class="fas fa-edit"></i> Your Message</label>
+          <textarea id="message" placeholder="How can we help you? Please provide details..." rows="6" required></textarea>
+        </div>
+        
+        <div class="form-submit">
+          <button type="submit" class="btn-primary">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+          <p class="form-note">We typically respond within 24-48 hours during business days.</p>
+        </div>
+      </form>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="section-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Frequently Asked Questions</h2>
+      </div>
+      
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Do I need to book in advance?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We highly recommend booking in advance, especially on weekends and holidays, as we have limited capacity to ensure a comfortable experience for both visitors and cats. Walk-ins are welcome based on availability.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Are children allowed in the café?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, children aged 8 and above are welcome when accompanied by an adult. We ask that children be supervised at all times and taught to be gentle with the cats.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Can I bring my own cat?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>For the safety and comfort of our rescue cats, we do not allow outside cats in the café. All our cats are vaccinated and have been carefully introduced to each other in our controlled environment.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Do you serve food and drinks?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, we have a full menu of coffee, tea, non-coffee drinks, and pastries. Food and drinks must be consumed in the designated human area, not in the cat zones.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How can I adopt a cat from MewBrew?</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Visit our Cats page to see available cats, then fill out the adoption inquiry form. Our adoption process includes a meeting with the cat, application review, and a virtual home check. Adoption fees help cover veterinary costs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+      <div class="section-header">
+        <i class="fas fa-map"></i>
+        <h2>Find Us</h2>
+      </div>
+      <div class="map-container">
+        <div class="map-placeholder">
+          <i class="fas fa-map-marked-alt"></i>
+          <p>Map would be embedded here</p>
+          <p>123 Cat Street, Iloilo City</p>
+        </div>
+      </div>
+      <div class="map-notes">
+        <p><i class="fas fa-parking"></i> <strong>Parking:</strong> Street parking available. There's also a paid parking lot one block away.</p>
+        <p><i class="fas fa-bus"></i> <strong>Public Transport:</strong> We're accessible via jeepney routes 10 and 15. The nearest stop is "Cat Street Corner".</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (same as index.html) -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <div class="logo">
+          <i class="fas fa-cat"></i>
+          <h3>MewBrew Café</h3>
+        </div>
+        <p>123 Cat Street, Iloilo City</p>
+        <p>Open Daily: 10:00 AM – 9:00 PM</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="cats.html">Our Cats</a></li>
+          <li><a href="booking.html">Booking</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Connect With Us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>contact@mewbrew.com</p>
+        <p>(033) 123-4567</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 MewBrew Café. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+    
+    // FAQ toggle functionality
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', function() {
+        const answer = this.nextElementSibling;
+        const icon = this.querySelector('i');
+        
+        // Toggle current answer
+        answer.classList.toggle('active');
+        icon.classList.toggle('fa-chevron-down');
+        icon.classList.toggle('fa-chevron-up');
+        
+        // Close other answers
+        document.querySelectorAll('.faq-answer').forEach(otherAnswer => {
+          if (otherAnswer !== answer) {
+            otherAnswer.classList.remove('active');
+            otherAnswer.previousElementSibling.querySelector('i').classList.add('fa-chevron-down');
+            otherAnswer.previousElementSibling.querySelector('i').classList.remove('fa-chevron-up');
+          }
+        });
+      });
+    });
+    
+    // Form submission
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your message! We will get back to you within 24-48 hours.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>

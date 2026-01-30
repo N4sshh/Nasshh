@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking | MewBrew</title>
+  <link rel="stylesheet" href="css/booking.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation (same as index.html) -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <i class="fas fa-cat"></i>
+        <h1>MewBrew</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="menu.html"><i class="fas fa-coffee"></i> Menu</a></li>
+        <li><a href="cats.html"><i class="fas fa-paw"></i> Cats</a></li>
+        <li><a href="booking.html" class="active"><i class="fas fa-calendar-alt"></i> Booking</a></li>
+        <li><a href="events.html"><i class="fas fa-gamepad"></i> Events</a></li>
+        <li><a href="shop.html"><i class="fas fa-shopping-bag"></i> Shop</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Booking Header -->
+  <header class="page-header">
+    <h1>Book a Visit</h1>
+    <p>Reserve your spot for a relaxing time with our cats</p>
+  </header>
+
+  <!-- Booking Container -->
+  <main class="booking-container">
+    <div class="booking-info">
+      <div class="info-card">
+        <h2><i class="fas fa-info-circle"></i> Booking Information</h2>
+        <ul>
+          <li><i class="fas fa-clock"></i> <strong>Hours:</strong> 10:00 AM – 9:00 PM Daily</li>
+          <li><i class="fas fa-users"></i> <strong>Capacity:</strong> Max 15 visitors per hour</li>
+          <li><i class="fas fa-cat"></i> <strong>Cat Areas:</strong> Separate zones for play and relaxation</li>
+          <li><i class="fas fa-child"></i> <strong>Age Limit:</strong> Children must be 8+ years old</li>
+          <li><i class="fas fa-hourglass-half"></i> <strong>Time Slots:</strong> 1-hour sessions</li>
+          <li><i class="fas fa-paw"></i> <strong>Rules:</strong> Be gentle with cats, no flash photography</li>
+        </ul>
+      </div>
+      
+      <div class="pricing-card">
+        <h2><i class="fas fa-tag"></i> Pricing</h2>
+        <div class="price-item">
+          <h3>Standard Visit</h3>
+          <p class="price">₱200 <span>per person</span></p>
+          <p>Includes 1-hour session with cats</p>
+        </div>
+        <div class="price-item">
+          <h3>Student/Senior Discount</h3>
+          <p class="price">₱150 <span>per person</span></p>
+          <p>Valid ID required</p>
+        </div>
+        <div class="price-item">
+          <h3>Group Booking (5+ people)</h3>
+          <p class="price">₱170 <span>per person</span></p>
+          <p>Perfect for friends and family</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Booking Form -->
+    <section class="booking-form-section">
+      <h2><i class="fas fa-calendar-check"></i> Reservation Form</h2>
+      <p>Fill out the form below to book your visit. You'll receive a confirmation email within 24 hours.</p>
+      
+      <form class="booking-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fullname"><i class="fas fa-user"></i> Full Name</label>
+            <input type="text" id="fullname" placeholder="Enter your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="date"><i class="fas fa-calendar"></i> Visit Date</label>
+            <input type="date" id="date" required>
+          </div>
+          <div class="form-group">
+            <label for="time"><i class="fas fa-clock"></i> Visit Time</label>
+            <select id="time" required>
+              <option value="" disabled selected>Select a time slot</option>
+              <option value="10:00">10:00 AM</option>
+              <option value="11:00">11:00 AM</option>
+              <option value="12:00">12:00 PM</option>
+              <option value="13:00">1:00 PM</option>
+              <option value="14:00">2:00 PM</option>
+              <option value="15:00">3:00 PM</option>
+              <option value="16:00">4:00 PM</option>
+              <option value="17:00">5:00 PM</option>
+              <option value="18:00">6:00 PM</option>
+              <option value="19:00">7:00 PM</option>
+              <option value="20:00">8:00 PM</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="guests"><i class="fas fa-users"></i> Number of Guests</label>
+            <div class="guest-selector">
+              <button type="button" class="guest-btn" id="decrease">-</button>
+              <input type="number" id="guests" value="1" min="1" max="10">
+              <button type="button" class="guest-btn" id="increase">+</button>
+            </div>
+            <small>Maximum 10 guests per booking</small>
+          </div>
+          <div class="form-group">
+            <label for="category"><i class="fas fa-tag"></i> Booking Category</label>
+            <select id="category" required>
+              <option value="" disabled selected>Select category</option>
+              <option value="standard">Standard (₱200/person)</option>
+              <option value="student">Student/Senior (₱150/person)</option>
+              <option value="group">Group (₱170/person)</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="notes"><i class="fas fa-sticky-note"></i> Special Requests / Notes</label>
+          <textarea id="notes" placeholder="Any allergies, special needs, or requests? (e.g., birthday celebration)" rows="4"></textarea>
+        </div>
+        
+        <div class="form-summary">
+          <h3>Booking Summary</h3>
+          <div class="summary-details">
+            <div class="summary-item">
+              <span>Number of Guests:</span>
+              <span id="summary-guests">1</span>
+            </div>
+            <div class="summary-item">
+              <span>Rate per Person:</span>
+              <span id="summary-rate">₱200</span>
+            </div>
+            <div class="summary-item total">
+              <span>Total Amount:</span>
+              <span id="summary-total">₱200</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-submit">
+          <button type="submit" class="btn-primary">
+            <i class="fas fa-check-circle"></i> Confirm Booking
+          </button>
+          <p class="form-note">By booking, you agree to our <a href="#">terms and conditions</a> and understand our cat café rules.</p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer (same as index.html) -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <div class="logo">
+          <i class="fas fa-cat"></i>
+          <h3>MewBrew Café</h3>
+        </div>
+        <p>123 Cat Street, Iloilo City</p>
+        <p>Open Daily: 10:00 AM – 9:00 PM</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="cats.html">Our Cats</a></li>
+          <li><a href="booking.html">Booking</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Connect With Us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>contact@mewbrew.com</p>
+        <p>(033) 123-4567</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 MewBrew Café. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+    
+    // Guest counter functionality
+    const guestsInput = document.getElementById('guests');
+    const decreaseBtn = document.getElementById('decrease');
+    const increaseBtn = document.getElementById('increase');
+    
+    decreaseBtn.addEventListener('click', function() {
+      if (guestsInput.value > 1) {
+        guestsInput.value = parseInt(guestsInput.value) - 1;
+        updateSummary();
+      }
+    });
+    
+    increaseBtn.addEventListener('click', function() {
+      if (guestsInput.value < 10) {
+        guestsInput.value = parseInt(guestsInput.value) + 1;
+        updateSummary();
+      }
+    });
+    
+    // Update booking summary
+    function updateSummary() {
+      const guests = parseInt(guestsInput.value);
+      const category = document.getElementById('category').value;
+      let rate = 200;
+      
+      if (category === 'student') rate = 150;
+      if (category === 'group') rate = 170;
+      
+      document.getElementById('summary-guests').textContent = guests;
+      document.getElementById('summary-rate').textContent = `₱${rate}`;
+      document.getElementById('summary-total').textContent = `₱${guests * rate}`;
+    }
+    
+    // Event listeners for summary updates
+    guestsInput.addEventListener('change', updateSummary);
+    document.getElementById('category').addEventListener('change', updateSummary);
+    
+    // Form submission
+    document.querySelector('.booking-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your booking! A confirmation email will be sent to you shortly.');
+      this.reset();
+      updateSummary();
+    });
+    
+    // Set minimum date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('date').setAttribute('min', today);
+  </script>
+</body>
+</html>
