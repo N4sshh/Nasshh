@@ -1,0 +1,463 @@
+/* wireframe.css - Clean wireframe view */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.5;
+    color: #333;
+    background-color: #fff;
+}
+
+/* WIREFRAME VISUALIZATION */
+* {
+    border: 1px solid #ddd !important;
+    background-color: #f9f9f9 !important;
+    color: #333 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    background-image: none !important;
+}
+
+/* Navigation */
+.navbar {
+    background: #eee !important;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.logo::before {
+    content: "LOGO";
+    background: #ccc;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: #333;
+    text-decoration: none;
+    padding: 8px 15px;
+    border: 2px solid #999 !important;
+    background: #fff !important;
+    display: block;
+}
+
+.nav-links a::before {
+    content: "📄 ";
+    font-size: 12px;
+}
+
+.menu-toggle {
+    display: none;
+    background: #ccc;
+    border: 2px solid #999;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    padding: 60px 20px;
+    text-align: center;
+    background: #f0f0f0 !important;
+    border: 3px dashed #999 !important;
+    margin: 20px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero::before {
+    content: "HERO SECTION";
+    font-size: 24px;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.hero-content {
+    max-width: 800px;
+    width: 100%;
+}
+
+.hero h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    background: #ddd;
+    padding: 10px;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    background: #eaeaea;
+    padding: 10px;
+}
+
+.hero-description {
+    margin-bottom: 30px;
+    background: #f5f5f5;
+    padding: 15px;
+    border-left: 4px solid #999;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 12px 25px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    min-width: 150px;
+    text-align: center;
+    border: 2px solid #666 !important;
+}
+
+.btn-primary {
+    background: #ccc !important;
+}
+
+.btn-secondary {
+    background: #ddd !important;
+}
+
+.btn-primary::after {
+    content: " (Primary)";
+    font-size: 12px;
+    color: #666;
+}
+
+.btn-secondary::after {
+    content: " (Secondary)";
+    font-size: 12px;
+    color: #666;
+}
+
+/* Features Section */
+.features {
+    padding: 60px 20px;
+    background: #fff !important;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.section-title::after {
+    content: " (Section Title)";
+    font-size: 14px;
+    color: #777;
+    font-weight: normal;
+}
+
+.features-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: #fafafa !important;
+    border: 2px solid #bbb !important;
+    padding: 25px;
+    text-align: center;
+    position: relative;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card::before {
+    content: "FEATURE CARD";
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background: #999;
+    color: white;
+    padding: 3px 8px;
+    font-size: 11px;
+    border-radius: 3px;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    background: #ddd;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-icon::before {
+    content: "ICON";
+    font-size: 14px;
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    background: #eee;
+    padding: 8px;
+}
+
+.card p {
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.card-link {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 0;
+    border-top: 1px solid #ccc;
+}
+
+.card-link::after {
+    content: " →";
+}
+
+/* CTA Section */
+.cta {
+    background: #e0e0e0 !important;
+    padding: 60px 20px;
+    text-align: center;
+    margin: 40px 0;
+    border: 2px dashed #777 !important;
+}
+
+.cta::before {
+    content: "CALL TO ACTION SECTION";
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    background: #d5d5d5;
+    padding: 15px;
+}
+
+.cta p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    background: #eee;
+    padding: 15px;
+}
+
+/* Footer */
+footer {
+    background: #333 !important;
+    color: #ddd !important;
+    padding: 50px 0 20px;
+    margin-top: 40px;
+}
+
+footer::before {
+    content: "FOOTER SECTION";
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ccc;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #555;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.footer-section {
+    background: #444 !important;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.footer-section h4 {
+    color: #ccc !important;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #666;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #ddd !important;
+    text-decoration: none;
+    display: block;
+    padding: 5px 0;
+}
+
+.footer-section ul li a::before {
+    content: "• ";
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.social-links a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: #555 !important;
+    color: #ddd !important;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+.social-links a::before {
+    content: "📱";
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: #eee;
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .nav-links.active {
+        display: flex;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .features-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0 10px;
+    }
+    
+    .hero {
+        padding: 40px 15px;
+        margin: 10px;
+    }
+    
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
