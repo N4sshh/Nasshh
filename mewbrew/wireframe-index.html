@@ -6,7 +6,6 @@
   <title>MewBrew Café - Wireframe</title>
   <link rel="stylesheet" href="wireframe.css">
   <style>
-    /* Simple wireframe toggle */
     .wireframe-toggle {
       position: fixed;
       top: 10px;
@@ -23,7 +22,6 @@
   </style>
 </head>
 <body>
-  <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-container">
       <div class="logo">
@@ -44,23 +42,21 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="hero-content">
+  <header class="main-header">
+    <div class="header-content">
       <h2>Welcome to MewBrew Café</h2>
-      <p class="tagline">Coffee • Cats • Cozy Vibes</p>
-      <p class="hero-description">
+      <p class="subtitle">Coffee • Cats • Cozy Vibes</p>
+      <p class="header-description">
         A relaxing cat café where you can enjoy handcrafted drinks,
         freshly baked pastries, and spend quality time with adoptable rescue cats.
       </p>
-      <div class="hero-buttons">
-        <a href="booking.html" class="btn-primary">Book a Visit</a>
-        <a href="menu.html" class="btn-secondary">View Menu</a>
+      <div class="header-buttons">
+        <a href="booking.html" class="btn main-btn">Book a Visit</a>
+        <a href="menu.html" class="btn alt-btn">View Menu</a>
       </div>
     </div>
   </header>
 
-  <!-- Features Section -->
   <section class="features">
     <h2 class="section-title">Why Visit MewBrew?</h2>
     <div class="features-container">
@@ -85,16 +81,14 @@
     </div>
   </section>
 
-  <!-- Call to Action -->
   <section class="cta">
     <div class="cta-content">
       <h2>Ready for a Purrfect Day?</h2>
       <p>Book your visit now and experience the cozy atmosphere of MewBrew Café.</p>
-      <a href="booking.html" class="btn-primary">Book Now</a>
+      <a href="booking.html" class="btn main-btn">Book Now</a>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-container">
       <div class="footer-section">
@@ -127,18 +121,15 @@
     </div>
   </footer>
 
-  <!-- Wireframe Toggle Button -->
   <button class="wireframe-toggle" onclick="toggleWireframe()">
     Wireframe View
   </button>
 
   <script>
-    // Mobile menu toggle
     document.querySelector('.menu-toggle').addEventListener('click', function() {
       document.querySelector('.nav-links').classList.toggle('active');
     });
 
-    // Simple wireframe toggle (turns off wireframe.css)
     function toggleWireframe() {
       const links = document.querySelectorAll('link[rel="stylesheet"]');
       links.forEach(link => {
@@ -150,7 +141,6 @@
       });
     }
 
-    // Add section labels on page load
     document.addEventListener('DOMContentLoaded', function() {
       const sections = document.querySelectorAll('section, header, footer');
       sections.forEach(section => {
