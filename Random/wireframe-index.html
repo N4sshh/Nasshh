@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MewBrew Café - Wireframe</title>
+  <link rel="stylesheet" href="wireframe.css">
+  <style>
+    /* Simple wireframe toggle */
+    .wireframe-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: #333;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1000;
+      font-family: 'Arial', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <h1>MewBrew Café</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="cats.html">Cats</a></li>
+        <li><a href="booking.html">Booking</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="menu-toggle">
+        ☰ Menu
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <h2>Welcome to MewBrew Café</h2>
+      <p class="tagline">Coffee • Cats • Cozy Vibes</p>
+      <p class="hero-description">
+        A relaxing cat café where you can enjoy handcrafted drinks,
+        freshly baked pastries, and spend quality time with adoptable rescue cats.
+      </p>
+      <div class="hero-buttons">
+        <a href="booking.html" class="btn-primary">Book a Visit</a>
+        <a href="menu.html" class="btn-secondary">View Menu</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2 class="section-title">Why Visit MewBrew?</h2>
+    <div class="features-container">
+      <div class="card">
+        <div class="card-icon"></div>
+        <h3>Adoptable Cats</h3>
+        <p>Meet friendly rescue cats looking for a loving home. All cats are vaccinated and ready for adoption.</p>
+        <a href="cats.html" class="card-link">Meet the Cats</a>
+      </div>
+      <div class="card">
+        <div class="card-icon"></div>
+        <h3>Fresh Menu</h3>
+        <p>Enjoy artisanal coffee, homemade pastries, and refreshing non-coffee drinks made with love.</p>
+        <a href="menu.html" class="card-link">View Menu</a>
+      </div>
+      <div class="card">
+        <div class="card-icon"></div>
+        <h3>Events & Games</h3>
+        <p>Join our community events, game nights, and cat adoption days. Fun for all ages!</p>
+        <a href="events.html" class="card-link">See Events</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta">
+    <div class="cta-content">
+      <h2>Ready for a Purrfect Day?</h2>
+      <p>Book your visit now and experience the cozy atmosphere of MewBrew Café.</p>
+      <a href="booking.html" class="btn-primary">Book Now</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>MewBrew Café</h3>
+        <p>123 Cat Street, Iloilo City</p>
+        <p>Open Daily: 10:00 AM – 9:00 PM</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="cats.html">Our Cats</a></li>
+          <li><a href="booking.html">Booking</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Connect With Us</h4>
+        <div class="social-links">
+          <a href="#">Facebook</a>
+          <a href="#">Instagram</a>
+          <a href="#">Twitter</a>
+        </div>
+        <p>contact@mewbrew.com</p>
+        <p>(033) 123-4567</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 MewBrew Café. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Wireframe Toggle Button -->
+  <button class="wireframe-toggle" onclick="toggleWireframe()">
+    Wireframe View
+  </button>
+
+  <script>
+    // Mobile menu toggle
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+
+    // Simple wireframe toggle (turns off wireframe.css)
+    function toggleWireframe() {
+      const links = document.querySelectorAll('link[rel="stylesheet"]');
+      links.forEach(link => {
+        if (link.href.includes('wireframe.css')) {
+          link.disabled = !link.disabled;
+          const btn = document.querySelector('.wireframe-toggle');
+          btn.textContent = link.disabled ? 'Wireframe OFF' : 'Wireframe ON';
+        }
+      });
+    }
+
+    // Add section labels on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('section, header, footer');
+      sections.forEach(section => {
+        if (!section.id) {
+          const tag = section.tagName.toLowerCase();
+          const label = document.createElement('div');
+          label.style.cssText = `
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 2px 5px;
+            font-size: 10px;
+            border-radius: 3px;
+            z-index: 100;
+            pointer-events: none;
+          `;
+          label.textContent = `<${tag} class="${section.className.split(' ')[0]}">`;
+          section.style.position = 'relative';
+          section.appendChild(label);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
