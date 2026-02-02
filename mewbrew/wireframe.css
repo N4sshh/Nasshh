@@ -1,4 +1,3 @@
-/* wireframe.css - Clean wireframe view */
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +11,6 @@ body {
     background-color: #fff;
 }
 
-/* WIREFRAME VISUALIZATION */
 * {
     border: 1px solid #ddd !important;
     background-color: #f9f9f9 !important;
@@ -22,7 +20,6 @@ body {
     background-image: none !important;
 }
 
-/* Navigation */
 .navbar {
     background: #eee !important;
     padding: 15px 0;
@@ -83,8 +80,7 @@ body {
     cursor: pointer;
 }
 
-/* Hero Section */
-.hero {
+.main-header {
     padding: 60px 20px;
     text-align: center;
     background: #f0f0f0 !important;
@@ -97,8 +93,8 @@ body {
     align-items: center;
 }
 
-.hero::before {
-    content: "HERO SECTION";
+.main-header::before {
+    content: "MAIN BANNER";
     font-size: 24px;
     font-weight: bold;
     color: #666;
@@ -106,40 +102,40 @@ body {
     display: block;
 }
 
-.hero-content {
+.header-content {
     max-width: 800px;
     width: 100%;
 }
 
-.hero h2 {
+.main-header h2 {
     font-size: 2rem;
     margin-bottom: 15px;
     background: #ddd;
     padding: 10px;
 }
 
-.tagline {
+.subtitle {
     font-size: 1.2rem;
     margin-bottom: 20px;
     background: #eaeaea;
     padding: 10px;
 }
 
-.hero-description {
+.header-description {
     margin-bottom: 30px;
     background: #f5f5f5;
     padding: 15px;
     border-left: 4px solid #999;
 }
 
-.hero-buttons {
+.header-buttons {
     display: flex;
     gap: 15px;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.btn-primary, .btn-secondary {
+.btn, .main-btn, .alt-btn {
     padding: 12px 25px;
     border-radius: 4px;
     text-decoration: none;
@@ -150,27 +146,26 @@ body {
     border: 2px solid #666 !important;
 }
 
-.btn-primary {
+.main-btn {
     background: #ccc !important;
 }
 
-.btn-secondary {
+.alt-btn {
     background: #ddd !important;
 }
 
-.btn-primary::after {
+.main-btn::after {
     content: " (Primary)";
     font-size: 12px;
     color: #666;
 }
 
-.btn-secondary::after {
+.alt-btn::after {
     content: " (Secondary)";
     font-size: 12px;
     color: #666;
 }
 
-/* Features Section */
 .features {
     padding: 60px 20px;
     background: #fff !important;
@@ -271,7 +266,6 @@ body {
     content: " →";
 }
 
-/* CTA Section */
 .cta {
     background: #e0e0e0 !important;
     padding: 60px 20px;
@@ -281,7 +275,7 @@ body {
 }
 
 .cta::before {
-    content: "CALL TO ACTION SECTION";
+    content: "BOOKING SECTION";
     font-size: 18px;
     font-weight: bold;
     color: #555;
@@ -308,7 +302,6 @@ body {
     padding: 15px;
 }
 
-/* Footer */
 footer {
     background: #333 !important;
     color: #ddd !important;
@@ -400,7 +393,6 @@ footer::before {
     font-size: 0.9rem;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -422,12 +414,12 @@ footer::before {
         display: block;
     }
     
-    .hero-buttons {
+    .header-buttons {
         flex-direction: column;
         align-items: center;
     }
     
-    .btn-primary, .btn-secondary {
+    .main-btn, .alt-btn {
         width: 100%;
         max-width: 300px;
     }
@@ -443,12 +435,12 @@ footer::before {
         padding: 0 10px;
     }
     
-    .hero {
+    .main-header {
         padding: 40px 15px;
         margin: 10px;
     }
     
-    .hero h2 {
+    .main-header h2 {
         font-size: 1.5rem;
     }
     
