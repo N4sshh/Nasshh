@@ -1,89 +1,573 @@
+index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nash Eicker Portfolio</title>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- External Stylesheet (First half of CSS) -->
   <link rel="stylesheet" href="style.css">
+  
+  <!-- Internal CSS (Second half of CSS) -->
+  <style>
+    /* PROJECTS */
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      border: 2px solid cyan;
+      background: rgba(0, 255, 255, 0.05);
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: cyan;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+
+    .project-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 255, 255, 0.3);
+      background: rgba(0, 255, 255, 0.1);
+    }
+
+    .project-img {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .project-card:hover .project-img img {
+      transform: scale(1.1);
+    }
+
+    .project-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+
+    .project-link {
+      color: cyan;
+      font-size: 2rem;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+
+    .project-link:hover {
+      transform: scale(1.2);
+    }
+
+    .project-content {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-content h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: cyan;
+      transition: color 0.3s ease;
+    }
+
+    .project-content h2 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .project-content h2:hover {
+      color: #fff;
+    }
+
+    .project-content p {
+      color: #ccc;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+
+    /* PROFILE/CONTACT */
+    .contact-content {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-content p {
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1rem 1.5rem;
+      border: 2px solid cyan;
+      border-radius: 50px;
+      color: cyan;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.7s ease;
+    }
+
+    .social-link:hover::before {
+      left: 100%;
+    }
+
+    .social-link:hover {
+      background: cyan;
+      color: #111;
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 255, 255, 0.3);
+    }
+
+    .social-link i {
+      font-size: 1.2rem;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      background: rgba(26, 26, 26, 0.8);
+      color: #888;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer span {
+      color: cyan;
+      font-weight: bold;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Focus states for accessibility */
+    a:focus,
+    button:focus {
+      outline: 2px solid cyan;
+      outline-offset: 2px;
+    }
+
+    /* Mobile menu without JS */
+    #nav-toggle {
+      display: none;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+      }
+      
+      header nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(26, 26, 26, 0.95);
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0;
+      }
+      
+      header nav a {
+        padding: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      
+      .about-nash h1 {
+        font-size: 2.5rem;
+      }
+      
+      .about-nash-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 250px;
+      }
+      
+      .about-details {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .projects-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .social-links {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      section {
+        padding: 3rem 1.5rem;
+      }
+      
+      .profile-img-container {
+        width: 180px;
+        height: 180px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .about-nash {
+        padding: 1rem;
+      }
+      
+      .about-nash h1 {
+        font-size: 2rem;
+      }
+      
+      .about-nash p {
+        font-size: 1rem;
+      }
+      
+      .section-header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .project-content h2 {
+        font-size: 1.3rem;
+      }
+      
+      .skill-card {
+        padding: 1.5rem;
+      }
+      
+      .detail-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+      }
+    }
+
+    /* Print styles */
+    @media print {
+      .bg-animation,
+      .scroll-indicator,
+      .menu-toggle {
+        display: none !important;
+      }
+      
+      body {
+        background: white !important;
+        color: black !important;
+      }
+      
+      header {
+        position: static;
+        background: white !important;
+        color: black !important;
+      }
+      
+      a {
+        color: blue !important;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Header -->
+  <!-- Background Animation -->
+  <div class="bg-animation">
+    <div class="circle-animation"></div>
+    <div class="circle-animation"></div>
+    <div class="circle-animation"></div>
+  </div>
+
+  <!-- Header Navigation -->
   <header>
-    <div class="logo">N</div>
+    <div class="logo" aria-label="Home">N</div>
     <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Profile</a>
+      <a href="#about"><i class="fas fa-user" aria-hidden="true"></i><span> About</span></a>
+      <a href="#skills"><i class="fas fa-code" aria-hidden="true"></i><span> Skills</span></a>
+      <a href="#projects"><i class="fas fa-project-diagram" aria-hidden="true"></i><span> Projects</span></a>
+      <a href="#contact"><i class="fas fa-address-card" aria-hidden="true"></i><span> Profile</span></a>
     </nav>
+    <div class="menu-toggle" aria-label="Menu">
+      <i class="fas fa-bars" aria-hidden="true"></i>
+    </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1>Hi, I'm <span class="highlight">Nash Eicker</span></h1>
-    <p>Hello! I’m Nash, passionate about technology, education, and creating engaging experiences through design and code.</p>
-  </section>
-
-  <!-- About -->
-  <section id="about">
-    <h1>About Me</h1>
-    <img src="https://n4sshh.github.io/Nasshh/nashy.jpg" alt="Profile Picture">
-    <p>Computer Programming undergraduate from Iloilo Science and Technology University (ISAT-U) with hands-on experience in full-stack development (HTML, CSS, PHP, MySQL) and AI-assisted programming. Passionate about building responsive web solutions and mentoring future technologists. Seeking opportunities to contribute technical expertise in an educational setting.</p>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills">
-    <h1>Skills</h1>
-    <div class="skills-grid">
-      <div class="skill-card">HTML</div>
-      <div class="skill-card">CSS</div>
-      <div class="skill-card">PHP</div>
-      <div class="skill-card">Databases</div>
-      <div class="skill-card">Prompt Engineering</div>
+  <!-- Hero/About Nash Section -->
+  <section class="about-nash" id="home">
+    <div class="about-nash-content">
+      <h1>Hi, I'm <span class="highlight">Nash Eicker</span></h1>
+      <p class="typing-animation">
+        Passionate about technology, education, and creating engaging experiences through design and code.
+      </p>
+      <div class="about-nash-buttons">
+        <a href="#projects" class="btn primary">View My Work</a>
+        <a href="#contact" class="btn secondary">Contact Me</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll Down</span>
+      <i class="fas fa-chevron-down" aria-hidden="true"></i>
     </div>
   </section>
 
-  <!-- Projects -->
-  <section id="projects">
-    <h1>Projects</h1>
-
-    <article>
-      <h2><a href="https://n4sshh.github.io/Nasshh/Games/UX%20or%20Uh-Oh.html" target="_blank">UX or Uh-Oh?</a></h2>
-      <p>Test your ability to identify good and poor UX design practices.<br>
-      You’ll see website screenshots – decide if they demonstrate good UX principles or have problems.</p>
-    </article>
-
-    <article>
-      <h2><a href="https://n4sshh.github.io/Nasshh/Games/Code%20Match.html" target="_blank">Code Match</a></h2>
-      <p>A fun game to match code snippets with their correct outputs.</p>
-    </article>
-
-    <article>
-      <h2><a href="https://nashyy.infinityfreeapp.com/" target="_blank">BeatSphere</a></h2>
-      <p><strong>BeatSphere: Where Music Comes Alive.</strong><br>
-      A digital space highlighting six featured artists while letting users suggest their own favorites.<br>
-      Designed to blend interactive UI with community-driven engagement, showing how audiences can shape music experiences.</p>
-    </article>
-
-    <article>
-      <h2><a href="https://n4sshh.github.io/Nasshh/Lendsay%20You're%20Beautiful.html" target="_blank">Simple Music Player</a></h2>
-      <p>A lightweight web-based music player demo built with HTML and CSS concepts.</p>
-    </article>
-
-    <article>
-      <h2><a href="https://n4sshh.github.io/Nasshh/Quiz/index.html" target="_blank">UX Design Principles Quiz</a></h2>
-      <p>Test your knowledge of UI/UX design concepts from the course material.<br>
-      – 15 questions (14 multiple-choice, 1 open-ended)<br>
-      – Results emailed upon completion<br>
-      – Navigate back and forth between questions</p>
-    </article>
+  <!-- About Section -->
+  <section id="about">
+    <div class="section-header">
+      <h1>About Me</h1>
+      <div class="header-line"></div>
+    </div>
+    <div class="about-content">
+      <div class="profile-img-container">
+        <img src="https://n4sshh.github.io/Nasshh/nashy.jpg" alt="Portrait of Nash Eicker" class="profile-img" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid cyan; position: relative; z-index: 2; transition: transform 0.5s ease;">
+        <div class="img-border-animation"></div>
+      </div>
+      <div class="about-text">
+        <p>
+          Computer Programming undergraduate at Iloilo Science and Technology University (ISAT-U) 
+          with hands-on experience in full-stack development (HTML, CSS, PHP, MySQL) and AI-assisted programming.
+          Passionate about building responsive web solutions and mentoring future technologists.
+        </p>
+        <div class="about-details">
+          <div class="detail-item">
+            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+            <span>Computer Programming</span>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            <span>Iloilo Science and Technology University</span>
+          </div>
+          <div class="detail-item">
+            <i class="fas fa-laptop-code" aria-hidden="true"></i>
+            <span>Full-Stack Development</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- Profile -->
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="section-header">
+      <h1>Skills</h1>
+      <div class="header-line"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <i class="fab fa-html5" aria-hidden="true"></i>
+        <h3>HTML</h3>
+        <div class="skill-progress"><div class="progress-bar" data-width="90%"></div></div>
+      </div>
+      <div class="skill-card">
+        <i class="fab fa-css3-alt" aria-hidden="true"></i>
+        <h3>CSS</h3>
+        <div class="skill-progress"><div class="progress-bar" data-width="85%"></div></div>
+      </div>
+      <div class="skill-card">
+        <i class="fab fa-php" aria-hidden="true"></i>
+        <h3>PHP</h3>
+        <div class="skill-progress"><div class="progress-bar" data-width="80%"></div></div>
+      </div>
+      <div class="skill-card">
+        <i class="fas fa-database" aria-hidden="true"></i>
+        <h3>Databases</h3>
+        <div class="skill-progress"><div class="progress-bar" data-width="75%"></div></div>
+      </div>
+      <div class="skill-card">
+        <i class="fas fa-robot" aria-hidden="true"></i>
+        <h3>Prompt Engineering</h3>
+        <div class="skill-progress"><div class="progress-bar" data-width="85%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="section-header">
+      <h1>Projects</h1>
+      <div class="header-line"></div>
+    </div>
+    <div class="projects-container">
+
+      <!-- Project 1 -->
+      <article class="project-card">
+        <div class="project-img">
+          <img src="https://n4sshh.github.io/Nasshh/Screenshot%202025-08-23%20122813.png" alt="UX or Uh-Oh Project Screenshot" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+          <div class="project-overlay">
+            <a href="https://n4sshh.github.io/Nasshh/Games/UX%20or%20Uh-Oh.html" target="_blank" class="project-link" aria-label="Open UX or Uh-Oh Project">
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+        <div class="project-content">
+          <h2><a href="https://n4sshh.github.io/Nasshh/Games/UX%20or%20Uh-Oh.html" target="_blank">UX or Uh-Oh?</a></h2>
+          <p>Test your ability to identify good and poor UX design practices with real-world screenshots.</p>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project-card">
+        <div class="project-img">
+          <img src="https://n4sshh.github.io/Nasshh/Screenshot%202025-08-23%20122846.png" alt="Code Match Project Screenshot" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+          <div class="project-overlay">
+            <a href="https://n4sshh.github.io/Nasshh/Games/Code%20Match.html" target="_blank" class="project-link" aria-label="Open Code Match Project">
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+        <div class="project-content">
+          <h2><a href="https://n4sshh.github.io/Nasshh/Games/Code%20Match.html" target="_blank">Code Match</a></h2>
+          <p>A fun and interactive game to match code snippets with their correct outputs.</p>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project-card">
+        <div class="project-img">
+          <img src="https://n4sshh.github.io/Nasshh/Screenshot%202025-08-23%20122912.png" alt="BeatSphere Project Screenshot" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+          <div class="project-overlay">
+            <a href="https://nashyy.infinityfreeapp.com/" target="_blank" class="project-link" aria-label="Open BeatSphere Project">
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+        <div class="project-content">
+          <h2><a href="https://nashyy.infinityfreeapp.com/" target="_blank">BeatSphere</a></h2>
+          <p><strong>BeatSphere: Where Music Comes Alive.</strong> A platform featuring top artists and community-driven music suggestions.</p>
+        </div>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="project-card">
+        <div class="project-img">
+          <img src="https://n4sshh.github.io/Nasshh/Screenshot%202025-08-23%20122924.png" alt="Simple Music Player Screenshot" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+          <div class="project-overlay">
+            <a href="https://n4sshh.github.io/Nasshh/Lendsay%20You're%20Beautiful.html" target="_blank" class="project-link" aria-label="Open Music Player Project">
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+        <div class="project-content">
+          <h2><a href="https://n4sshh.github.io/Nasshh/Lendsay%20You're%20Beautiful.html" target="_blank">Simple Music Player</a></h2>
+          <p>A lightweight and simple music player demo using only HTML and CSS concepts.</p>
+        </div>
+      </article>
+
+      <!-- Project 5 -->
+      <article class="project-card">
+        <div class="project-img">
+          <img src="https://n4sshh.github.io/Nasshh/Screenshot%202025-08-23%20124241.png" alt="UX Design Quiz Screenshot" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+          <div class="project-overlay">
+            <a href="https://n4sshh.github.io/Nasshh/Quiz/index.html" target="_blank" class="project-link" aria-label="Open UX Quiz Project">
+              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+        <div class="project-content">
+          <h2><a href="https://n4sshh.github.io/Nasshh/Quiz/index.html" target="_blank">UX Design Principles Quiz</a></h2>
+          <p>A quiz to test your knowledge of UI/UX design concepts, featuring results emailed upon completion.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Contact/Profile -->
   <section id="contact">
-    <h1>My Profile</h1>
-    <p>Connect with me here:</p>
-    <p><a href="https://www.facebook.com/Nasshhyyyy" target="_blank" class="btn">Facebook Profile</a></p>
+    <div class="section-header">
+      <h1>My Profile</h1>
+      <div class="header-line"></div>
+    </div>
+    <div class="contact-content">
+      <p>Connect with me here:</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/Nasshhyyyy" target="_blank" class="social-link" aria-label="Facebook">
+          <i class="fab fa-facebook-f" aria-hidden="true"></i><span> Facebook</span>
+        </a>
+        <a href="https://github.com/N4sshh" class="social-link" aria-label="GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i><span> GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/nash-eicker-33515b362/" class="social-link" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in" aria-hidden="true"></i><span> LinkedIn</span>
+        </a>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
