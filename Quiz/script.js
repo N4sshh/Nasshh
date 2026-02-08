@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Initialize EmailJS with your User ID
+    // Initialize EmailJS
     emailjs.init("0bR5qvHli8_67NWOZ");
 
     // DOM Elements
@@ -16,141 +16,115 @@ document.addEventListener("DOMContentLoaded", function () {
     const finalScoreDisplay = document.getElementById("final-score");
     const scoreFill = document.getElementById("score-fill");
     const resultEmail = document.getElementById("result-email");
+    const resultMessage = document.getElementById("result-message");
     const gmailInput = document.getElementById("gmail");
     
-    // Quiz Data
+    // Enhanced Quiz Data (12 questions)
     const questions = [
         {
-            question: "1. What is the primary focus of User Experience (UX) design?",
+            question: "1. What is the primary goal of User Experience (UX) design?",
             options: [
-                { text: "Visual aesthetics of a website", correct: false },
-                { text: "Overall experience and usability of a product", correct: true },
-                { text: "Coding and backend functionality", correct: false },
-                { text: "Marketing and branding", correct: false }
+                { text: "Creating visually appealing interfaces", correct: false },
+                { text: "Ensuring optimal performance and speed", correct: false },
+                { text: "Enhancing overall user satisfaction and usability", correct: true },
+                { text: "Implementing complex animations and effects", correct: false }
             ]
         },
         {
-            question: "2. Which of the following is an example of a User Interface (UI) element?",
+            question: "2. Which element is crucial for establishing visual hierarchy in interface design?",
             options: [
-                { text: "Buttons and menus", correct: true },
-                { text: "Server response time", correct: false },
-                { text: "Customer support chat", correct: false },
-                { text: "Website loading speed", correct: false }
+                { text: "Using multiple font families", correct: false },
+                { text: "Varying size, weight, and spacing of elements", correct: true },
+                { text: "Implementing complex gradients", correct: false },
+                { text: "Adding decorative borders", correct: false }
             ]
         },
         {
-            question: "3. Why is visual hierarchy important in UI/UX design?",
+            question: "3. What does the 'Fitts's Law' principle state in UX design?",
             options: [
-                { text: "To add decorative elements to a page", correct: false },
-                { text: "To prioritize and direct user attention logically", correct: true },
-                { text: "To reduce the need for navigation menus", correct: false },
-                { text: "To increase the number of colors used", correct: false }
+                { text: "Users prefer minimalistic designs", correct: false },
+                { text: "The time to reach a target depends on distance and size", correct: true },
+                { text: "Colors affect user emotions", correct: false },
+                { text: "Consistency reduces cognitive load", correct: false }
             ]
         },
         {
-            question: "4. A website uses complementary colors for its buttons and headers. Which design principle is this following?",
+            question: "4. Which color scheme uses colors opposite each other on the color wheel?",
             options: [
-                { text: "Consistency", correct: false },
-                { text: "Color harmony", correct: true },
-                { text: "Affordance", correct: false },
-                { text: "Feedback", correct: false }
+                { text: "Analogous", correct: false },
+                { text: "Monochromatic", correct: false },
+                { text: "Complementary", correct: true },
+                { text: "Triadic", correct: false }
             ]
         },
         {
-            question: "5. What is a key benefit of a grid-aligned layout?",
+            question: "5. What is the purpose of a 'wireframe' in the design process?",
             options: [
-                { text: "It allows for more text-heavy content", correct: false },
-                { text: "It creates a clear, organized structure", correct: true },
-                { text: "It reduces the need for images", correct: false },
-                { text: "It eliminates the need for spacing", correct: false }
+                { text: "To showcase final visual design", correct: false },
+                { text: "To test color combinations", correct: false },
+                { text: "To define structure and layout", correct: true },
+                { text: "To measure loading performance", correct: false }
             ]
         },
         {
-            question: "6. Which of these violates accessibility principles?",
+            question: "6. Which accessibility principle ensures content is perceivable by all users?",
             options: [
-                { text: "Low contrast between text and background", correct: true },
-                { text: "Clear navigation labels", correct: false },
-                { text: "Responsive design", correct: false },
-                { text: "Consistent button styles", correct: false }
+                { text: "Sufficient color contrast", correct: true },
+                { text: "Fast loading times", correct: false },
+                { text: "Minimal scrolling", correct: false },
+                { text: "Complex interactions", correct: false }
             ]
         },
         {
-            question: "7. What is the purpose of visual hierarchy in UI/UX design?",
+            question: "7. What is 'affordance' in UI design?",
             options: [
-                { text: "To make the design look artistic", correct: false },
-                { text: "To guide users' attention to important elements", correct: true },
-                { text: "To increase the number of colors used", correct: false },
-                { text: "To reduce the need for text", correct: false }
-            ]
-        },
-        {
-            question: "8. Which of the following is NOT a UI element?",
-            options: [
-                { text: "Dropdown menu", correct: false },
-                { text: "Checkbox", correct: false },
-                { text: "Server processing time", correct: true },
-                { text: "Search bar", correct: false }
-            ]
-        },
-        {
-            question: "9. What does UX design primarily focus on improving?",
-            options: [
-                { text: "The visual appeal of buttons", correct: false },
-                { text: "The user's overall interaction and satisfaction", correct: true },
-                { text: "The website's loading speed", correct: false },
-                { text: "The number of features available", correct: false }
-            ]
-        },
-        {
-            question: "10. What is one of the key benefits of good UI/UX design mentioned in the PDF?",
-            options: [
-                { text: "Reduced need for content", correct: false },
-                { text: "Enhanced user engagement", correct: true },
-                { text: "Lower development costs", correct: false },
-                { text: "Fewer design iterations", correct: false }
-            ]
-        },
-        {
-            question: "11. Which principle is demonstrated when a website's layout remains consistent across different pages?",
-            options: [
-                { text: "Consistency", correct: true },
-                { text: "Affordance", correct: false },
-                { text: "Accessibility", correct: false },
-                { text: "Feedback", correct: false }
-            ]
-        },
-        {
-            question: "12. What is the main goal of responsive design?",
-            options: [
-                { text: "To make the website load faster", correct: false },
-                { text: "To ensure the website works well on all devices", correct: true },
-                { text: "To reduce the number of images used", correct: false },
-                { text: "To make the website more colorful", correct: false }
-            ]
-        },
-        {
-            question: "13. Which of the following is an example of good UI/UX from the PDF?",
-            options: [
-                { text: "A cluttered navigation menu", correct: false },
-                { text: "Clear call-to-action buttons", correct: true },
-                { text: "Low-contrast text", correct: false },
-                { text: "Inconsistent spacing", correct: false }
-            ]
-        },
-        {
-            question: "14. What does the principle of 'affordance' refer to in UI design?",
-            options: [
-                { text: "The loading speed of a button", correct: false },
+                { text: "The loading speed of elements", correct: false },
                 { text: "How clearly an element's function is communicated", correct: true },
-                { text: "The color scheme of a website", correct: false },
-                { text: "The number of menu items", correct: false }
+                { text: "The color harmony of the interface", correct: false },
+                { text: "The animation smoothness", correct: false }
             ]
         },
         {
-            question: "15. What is one of the key takeaways about UI/UX design mentioned in the PDF's conclusion?",
+            question: "8. Which design pattern helps users understand their location within an application?",
+            options: [
+                { text: "Breadcrumb navigation", correct: true },
+                { text: "Modal windows", correct: false },
+                { text: "Infinite scrolling", correct: false },
+                { text: "Parallax effects", correct: false }
+            ]
+        },
+        {
+            question: "9. What does 'responsive design' ensure?",
+            options: [
+                { text: "Fast server response times", correct: false },
+                { text: "Optimal viewing across all devices", correct: true },
+                { text: "High-resolution images", correct: false },
+                { text: "Complex animations", correct: false }
+            ]
+        },
+        {
+            question: "10. Which principle states that interfaces should keep users informed about system status?",
+            options: [
+                { text: "Jakob's Law", correct: false },
+                { text: "Miller's Law", correct: false },
+                { text: "Hick's Law", correct: false },
+                { text: "Visibility of system status", correct: true }
+            ]
+        },
+        {
+            question: "11. What is a 'user persona' used for in UX design?",
+            options: [
+                { text: "To track individual user behavior", correct: false },
+                { text: "To represent target user characteristics", correct: true },
+                { text: "To measure design effectiveness", correct: false },
+                { text: "To create marketing campaigns", correct: false }
+            ]
+        },
+        {
+            question: "12. Imagine you're designing a dashboard for a fitness app. Describe how you would apply UX principles to ensure the dashboard is effective, engaging, and user-friendly for tracking daily activity and goals.",
             isTextAnswer: true,
-            keywords: ["user-centered", "usability", "accessibility", "engaging", "trust", "customer satisfaction", "growth"]
-        }        
+            keywords: ["clarity", "visual hierarchy", "progress indicators", "personalization", "motivation", "simplicity", "actionable insights", "goal tracking", "feedback", "usability"]
+        }
     ];
 
     // Quiz State
@@ -160,6 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Initialize Quiz
     function initializeQuiz() {
+        quizForm.classList.add('fade-in');
         renderCurrentQuestion();
         updateProgress();
     }
@@ -170,25 +145,38 @@ document.addEventListener("DOMContentLoaded", function () {
         const question = questions[currentQuestionIndex];
         
         const questionDiv = document.createElement('div');
-        questionDiv.className = 'question active';
+        questionDiv.className = 'question active slide-in';
         
-        const questionText = document.createElement('p');
+        const questionText = document.createElement('h4');
         questionText.className = 'question-text';
         questionText.textContent = question.question;
         questionDiv.appendChild(questionText);
         
         if (question.isTextAnswer) {
-            const textInput = document.createElement('input');
-            textInput.type = 'text';
-            textInput.id = `q${currentQuestionIndex+1}`;
-            textInput.name = `q${currentQuestionIndex+1}`;
-            textInput.placeholder = 'Type your answer here...';
-            textInput.value = userAnswers[currentQuestionIndex] || '';
-            questionDiv.appendChild(textInput);
+            const textContainer = document.createElement('div');
+            textContainer.className = 'text-answer-container';
+            
+            const textarea = document.createElement('textarea');
+            textarea.id = `q${currentQuestionIndex+1}`;
+            textarea.name = `q${currentQuestionIndex+1}`;
+            textarea.placeholder = 'Share your design approach... Consider aspects like visual hierarchy, user motivation, clarity, and engagement strategies.';
+            textarea.value = userAnswers[currentQuestionIndex] || '';
+            textarea.rows = 6;
+            
+            const hint = document.createElement('div');
+            hint.className = 'form-text mt-2';
+            hint.innerHTML = '<i class="fas fa-lightbulb me-1"></i>Tip: Consider aspects like visual hierarchy, user motivation, clarity, and engagement strategies.';
+            
+            textContainer.appendChild(textarea);
+            textContainer.appendChild(hint);
+            questionDiv.appendChild(textContainer);
         } else {
             question.options.forEach((option, optIndex) => {
                 const optionDiv = document.createElement('div');
                 optionDiv.className = 'option';
+                if (userAnswers[currentQuestionIndex] === optIndex.toString()) {
+                    optionDiv.classList.add('selected');
+                }
                 
                 const radio = document.createElement('input');
                 radio.type = 'radio';
@@ -199,9 +187,19 @@ document.addEventListener("DOMContentLoaded", function () {
                     radio.checked = true;
                 }
                 
+                radio.addEventListener('change', function() {
+                    document.querySelectorAll('.option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    optionDiv.classList.add('selected');
+                });
+                
                 const label = document.createElement('label');
                 label.htmlFor = `q${currentQuestionIndex+1}-opt${optIndex+1}`;
                 label.textContent = option.text;
+                label.style.cursor = 'pointer';
+                label.style.marginBottom = '0';
+                label.style.flex = '1';
                 
                 optionDiv.appendChild(radio);
                 optionDiv.appendChild(label);
@@ -213,12 +211,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Navigation buttons
         const navButtons = document.createElement('div');
-        navButtons.className = 'navigation-buttons';
+        navButtons.className = 'd-flex justify-content-between align-items-center mt-4';
         
         const prevButton = document.createElement('button');
         prevButton.type = 'button';
         prevButton.className = 'btn-secondary';
-        prevButton.innerHTML = '<i class="fas fa-arrow-left"></i> Previous';
+        prevButton.innerHTML = '<i class="fas fa-arrow-left me-2"></i> Previous';
         prevButton.addEventListener('click', goToPreviousQuestion);
         prevButton.disabled = currentQuestionIndex === 0;
         
@@ -226,8 +224,8 @@ document.addEventListener("DOMContentLoaded", function () {
         nextButton.type = 'button';
         nextButton.className = 'btn-primary';
         nextButton.innerHTML = currentQuestionIndex === questions.length - 1 ? 
-            'Review Answers <i class="fas fa-check"></i>' : 
-            'Next <i class="fas fa-arrow-right"></i>';
+            '<i class="fas fa-check me-2"></i> Review Answers' : 
+            'Next <i class="fas fa-arrow-right ms-2"></i>';
         nextButton.addEventListener('click', goToNextQuestion);
         
         navButtons.appendChild(prevButton);
@@ -246,7 +244,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function goToNextQuestion() {
-        if (!saveCurrentAnswer()) return;
+        if (!saveCurrentAnswer()) {
+            showNotification('Please provide an answer before proceeding.', 'warning');
+            return;
+        }
         
         if (currentQuestionIndex < questions.length - 1) {
             currentQuestionIndex++;
@@ -255,6 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             quizForm.style.display = 'none';
             emailSection.style.display = 'block';
+            emailSection.classList.add('fade-in');
         }
     }
 
@@ -262,16 +264,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const currentQ = questions[currentQuestionIndex];
         
         if (currentQ.isTextAnswer) {
-            const textAnswer = document.querySelector(`.question.active input[type="text"]`).value.trim();
+            const textAnswer = document.querySelector(`.question.active textarea`).value.trim();
             if (!textAnswer) {
-                alert('Please provide an answer before proceeding.');
                 return false;
             }
             userAnswers[currentQuestionIndex] = textAnswer;
         } else {
             const selectedOption = document.querySelector(`.question.active input[type="radio"]:checked`);
             if (!selectedOption) {
-                alert('Please select an answer before proceeding.');
                 return false;
             }
             userAnswers[currentQuestionIndex] = selectedOption.value;
@@ -289,19 +289,14 @@ document.addEventListener("DOMContentLoaded", function () {
         score = 0;
         questions.forEach((q, index) => {
             if (q.isTextAnswer) {
-                // For text answers, check if the answer includes any of the keywords
                 const answer = userAnswers[index] ? userAnswers[index].toLowerCase() : '';
-                if (q.keywords) { // If the question has specific keywords
-                    const hasKeyword = q.keywords.some(keyword => 
+                if (q.keywords) {
+                    const keywordCount = q.keywords.filter(keyword => 
                         answer.includes(keyword.toLowerCase())
-                    );
-                    if (hasKeyword) score++;
-                } else {
-                    // Fallback for other text answers (if any)
-                    if (answer.includes('user-centered') || answer.includes('usability') || 
-                        answer.includes('accessibility') || answer.includes('engagement')) {
-                        score++;
-                    }
+                    ).length;
+                    // Award points based on keyword coverage (up to 2 points for text answers)
+                    if (keywordCount >= 3) score += 2;
+                    else if (keywordCount >= 1) score += 1;
                 }
             } else {
                 const selectedOptionIndex = userAnswers[index];
@@ -312,112 +307,29 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         return score;
     }
+
     function submitQuiz() {
         const email = gmailInput.value.trim();
         
         if (!validateEmail(email)) {
-            alert('Please enter a valid email address.');
+            showNotification('Please enter a valid email address.', 'danger');
+            gmailInput.focus();
             return;
         }
         
         submitQuizBtn.disabled = true;
-        submitQuizBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitQuizBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending Results...';
         
         calculateScore();
         sendResults(email);
     }
 
     function validateEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
     }
 
     function sendResults(email) {
-        // Prepare email content
-        let answersHtml = `<h2>UX Quiz Results</h2>
-                          <p>Your Score: ${score}/${questions.length}</p>
-                          <h3>Question Breakdown:</h3>`;
-        
-        questions.forEach((q, index) => {
-            answersHtml += `<p><strong>Q${index + 1}:</strong> ${q.question}</p>`;
-            if (q.isTextAnswer) {
-                answersHtml += `<p>Your answer: ${userAnswers[index] || 'Not answered'}</p>`;
-            } else {
-                const selectedOptionIndex = userAnswers[index];
-                const isCorrect = selectedOptionIndex !== null && q.options[selectedOptionIndex].correct;
-                answersHtml += `<p>Your answer: ${selectedOptionIndex !== null ? 
-                    q.options[selectedOptionIndex].text : 'Not answered'}`;
-                answersHtml += isCorrect ? ' (Correct)' : ' (Incorrect)';
-                if (!isCorrect && selectedOptionIndex !== null) {
-                    const correctOption = q.options.find(opt => opt.correct);
-                    answersHtml += `<br>Correct answer: ${correctOption.text}`;
-                }
-                answersHtml += `</p>`;
-            }
-        });
-
-        // Email parameters - ensure these match your template variables
-        const templateParams = {
-            to_email: email,
-            email: email,  // Some templates use this instead
-            user_email: email,  // Some templates use this
-            to_name: email.split('@')[0],
-            from_name: "UX Quiz Team",
-            subject: `Your UX Quiz Results - Score: ${score}/${questions.length}`,
-            message: answersHtml,
-            score: `${score}/${questions.length}`
-        };
-
-        // Send email
-        emailjs.send("service_56untwr", "template_prp1jw9", templateParams)
-            .then(() => {
-                showFinalResults(email);
-            })
-            .catch(error => {
-                console.error('EmailJS Error:', error);
-                alert(`Failed to send results. Please try again. Error: ${error.text || error}`);
-                submitQuizBtn.disabled = false;
-                submitQuizBtn.innerHTML = 'Submit Quiz <i class="fas fa-paper-plane"></i>';
-            });
-    }
-
-    function showFinalResults(email) {
-        emailSection.style.display = 'none';
-        scoreResult.style.display = 'block';
-        finalScoreDisplay.textContent = `${score}/${questions.length}`;
-        resultEmail.textContent = email;
-        
-        const percentage = (score / questions.length) * 100;
-        scoreFill.style.width = `${percentage}%`;
-        
-        if (percentage >= 80) {
-            scoreFill.style.backgroundColor = '#27ae60';
-        } else if (percentage >= 50) {
-            scoreFill.style.backgroundColor = '#f39c12';
-        } else {
-            scoreFill.style.backgroundColor = '#e74c3c';
-        }
-    }
-
-    // Event Listeners
-    startQuizBtn.addEventListener('click', () => {
-        quizIntro.style.display = 'none';
-        quizForm.style.display = 'block';
-        initializeQuiz();
-    });
-
-    backToQuizBtn.addEventListener('click', () => {
-        emailSection.style.display = 'none';
-        quizForm.style.display = 'block';
-    });
-
-    submitQuizBtn.addEventListener('click', submitQuiz);
-
-    tryAgainBtn.addEventListener('click', () => {
-        currentQuestionIndex = 0;
-        userAnswers = Array(questions.length).fill(null);
-        score = 0;
-        gmailInput.value = '';
-        scoreResult.style.display = 'none';
-        quizIntro.style.display = 'block';
-    });
-});
+        // Prepare detailed results
+        let answersHtml = `
+            <div style="font-family: A
