@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM loaded - script.js initialized"); // Debug log
+    
     // Initialize EmailJS
     emailjs.init("0bR5qvHli8_67NWOZ");
+    console.log("EmailJS initialized"); // Debug log
 
     // DOM Elements
     const quizIntro = document.getElementById("quiz-intro");
@@ -19,6 +22,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const resultMessage = document.getElementById("result-message");
     const gmailInput = document.getElementById("gmail");
     
+    // Debug: Check if elements are found
+    console.log("Elements found:", {
+        startQuizBtn: !!startQuizBtn,
+        quizIntro: !!quizIntro,
+        quizForm: !!quizForm
+    });
+
     // Enhanced Quiz Data (12 questions)
     const questions = [
         {
@@ -134,6 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Initialize Quiz
     function initializeQuiz() {
+        console.log("Initializing quiz..."); // Debug log
         quizForm.classList.add('fade-in');
         renderCurrentQuestion();
         updateProgress();
@@ -141,6 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Render current question
     function renderCurrentQuestion() {
+        console.log("Rendering question:", currentQuestionIndex); // Debug log
         quizForm.innerHTML = '';
         const question = questions[currentQuestionIndex];
         
@@ -231,10 +243,13 @@ document.addEventListener("DOMContentLoaded", function () {
         navButtons.appendChild(prevButton);
         navButtons.appendChild(nextButton);
         quizForm.appendChild(navButtons);
+        
+        console.log("Question rendered successfully"); // Debug log
     }
 
     // Navigation functions
     function goToPreviousQuestion() {
+        console.log("Going to previous question"); // Debug log
         saveCurrentAnswer();
         if (currentQuestionIndex > 0) {
             currentQuestionIndex--;
@@ -244,6 +259,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function goToNextQuestion() {
+        console.log("Going to next question"); // Debug log
         if (!saveCurrentAnswer()) {
             showNotification('Please provide an answer before proceeding.', 'warning');
             return;
@@ -257,25 +273,35 @@ document.addEventListener("DOMContentLoaded", function () {
             quizForm.style.display = 'none';
             emailSection.style.display = 'block';
             emailSection.classList.add('fade-in');
+            console.log("Showing email section"); // Debug log
         }
     }
 
     function saveCurrentAnswer() {
         const currentQ = questions[currentQuestionIndex];
+        console.log("Saving answer for question:", currentQuestionIndex); // Debug log
         
         if (currentQ.isTextAnswer) {
-            const textAnswer = document.querySelector(`.question.active textarea`).value.trim();
+            const textarea = document.querySelector(`.question.active textarea`);
+            if (!textarea) {
+                console.log("Textarea not found"); // Debug log
+                return false;
+            }
+            const textAnswer = textarea.value.trim();
             if (!textAnswer) {
+                console.log("Text answer is empty"); // Debug log
                 return false;
             }
             userAnswers[currentQuestionIndex] = textAnswer;
         } else {
             const selectedOption = document.querySelector(`.question.active input[type="radio"]:checked`);
             if (!selectedOption) {
+                console.log("No option selected"); // Debug log
                 return false;
             }
             userAnswers[currentQuestionIndex] = selectedOption.value;
         }
+        console.log("Answer saved:", userAnswers[currentQuestionIndex]); // Debug log
         return true;
     }
 
@@ -283,6 +309,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
         progressBar.style.width = `${progress}%`;
         progressText.textContent = `${currentQuestionIndex + 1}/${questions.length}`;
+        console.log("Progress updated:", progressText.textContent); // Debug log
     }
 
     function calculateScore() {
@@ -305,10 +332,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         });
+        console.log("Score calculated:", score); // Debug log
         return score;
     }
 
     function submitQuiz() {
+        console.log("Submitting quiz..."); // Debug log
         const email = gmailInput.value.trim();
         
         if (!validateEmail(email)) {
@@ -330,6 +359,173 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function sendResults(email) {
+        console.log("Sending results to:", email); // Debug log
+        
         // Prepare detailed results
         let answersHtml = `
-            <div style="font-family: A
+            <div style="font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px;">
+                <h2 style="color: #0a192f; border-bottom: 3px solid #64ffda; padding-bottom: 10px;">UX Design Principles Quiz Results</h2>
+                <div style="background: linear-gradient(135deg, #64ffda, #1e90ff); color: white; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <h3 style="margin: 0;">Your Score: ${score}/${questions.length}</h3>
+                </div>
+                <h3 style="color: #0a192f;">Question Breakdown:</h3>
+                <div style="border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin: 15px 0;">
+        `;
+        
+        questions.forEach((q, index) => {
+            answersHtml += `
+                <div style="margin-bottom: 20px; padding: 15px; background: ${index % 2 === 0 ? '#f8f9fa' : 'white'}; border-radius: 6px;">
+                    <p style="font-weight: bold; color: #0a192f;">Q${index + 1}: ${q.question}</p>
+            `;
+            
+            if (q.isTextAnswer) {
+                const answer = userAnswers[index] || 'Not answered';
+                answersHtml += `<p><strong>Your Answer:</strong> ${answer}</p>`;
+                answersHtml += `<p><strong>Keywords to consider:</strong> ${q.keywords.join(', ')}</p>`;
+            } else {
+                const selectedOptionIndex = userAnswers[index];
+                const isCorrect = selectedOptionIndex !== null && q.options[selectedOptionIndex].correct;
+                const userAnswer = selectedOptionIndex !== null ? 
+                    q.options[selectedOptionIndex].text : 'Not answered';
+                
+                answersHtml += `<p><strong>Your Answer:</strong> ${userAnswer}`;
+                answersHtml += isCorrect ? ' ✅ <span style="color: green;">(Correct)</span>' : ' ❌ <span style="color: red;">(Incorrect)</span>';
+                
+                if (!isCorrect && selectedOptionIndex !== null) {
+                    const correctOption = q.options.find(opt => opt.correct);
+                    answersHtml += `<br><strong>Correct Answer:</strong> ${correctOption.text}`;
+                }
+                answersHtml += `</p>`;
+            }
+            answersHtml += `</div>`;
+        });
+        
+        answersHtml += `
+                </div>
+                <p style="color: #666; font-style: italic;">Thank you for taking the UX Design Principles Quiz!</p>
+            </div>
+        `;
+
+        // Email parameters
+        const templateParams = {
+            to_email: email,
+            email: email,
+            user_email: email,
+            to_name: email.split('@')[0],
+            from_name: "UX Design Quiz",
+            subject: `Your UX Design Quiz Results - Score: ${score}/${questions.length}`,
+            message: answersHtml,
+            score: `${score}/${questions.length}`
+        };
+
+        console.log("Sending email with params:", templateParams); // Debug log
+        
+        // Send email
+        emailjs.send("service_56untwr", "template_prp1jw9", templateParams)
+            .then(() => {
+                console.log("Email sent successfully"); // Debug log
+                showFinalResults(email);
+            })
+            .catch(error => {
+                console.error('EmailJS Error:', error);
+                showNotification(`Failed to send results. Please try again.`, 'danger');
+                submitQuizBtn.disabled = false;
+                submitQuizBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Submit Quiz';
+            });
+    }
+
+    function showFinalResults(email) {
+        console.log("Showing final results"); // Debug log
+        emailSection.style.display = 'none';
+        scoreResult.style.display = 'block';
+        scoreResult.classList.add('fade-in');
+        
+        finalScoreDisplay.textContent = `${score}/${questions.length}`;
+        resultEmail.textContent = email;
+        
+        const percentage = (score / questions.length) * 100;
+        scoreFill.style.width = `${percentage}%`;
+        
+        // Set result message based on score
+        if (percentage >= 90) {
+            resultMessage.textContent = "Outstanding! You have excellent UX design knowledge.";
+            scoreFill.style.background = 'linear-gradient(90deg, var(--tech-accent), #27ae60)';
+        } else if (percentage >= 70) {
+            resultMessage.textContent = "Great job! You have a solid understanding of UX principles.";
+            scoreFill.style.background = 'linear-gradient(90deg, var(--tech-accent), var(--tech-highlight))';
+        } else if (percentage >= 50) {
+            resultMessage.textContent = "Good effort! You're on the right track with UX fundamentals.";
+            scoreFill.style.background = 'linear-gradient(90deg, var(--tech-highlight), #f39c12)';
+        } else {
+            resultMessage.textContent = "Keep learning! Review the UX principles and try again.";
+            scoreFill.style.background = 'linear-gradient(90deg, #f39c12, var(--tech-danger))';
+        }
+        
+        console.log("Final results shown with score:", score); // Debug log
+    }
+
+    // Notification function
+    function showNotification(message, type) {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `alert alert-${type === 'warning' ? 'warning' : type === 'danger' ? 'danger' : 'info'} alert-dismissible fade show`;
+        notification.style.position = 'fixed';
+        notification.style.top = '20px';
+        notification.style.right = '20px';
+        notification.style.zIndex = '9999';
+        notification.style.minWidth = '300px';
+        notification.innerHTML = `
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.remove();
+            }
+        }, 5000);
+    }
+
+    // Event Listeners - FIXED THIS SECTION
+    if (startQuizBtn) {
+        startQuizBtn.addEventListener('click', function() {
+            console.log("Start Quiz button clicked!"); // Debug log
+            quizIntro.style.display = 'none';
+            quizForm.style.display = 'block';
+            initializeQuiz();
+        });
+    } else {
+        console.error("Start Quiz button not found!");
+    }
+
+    if (backToQuizBtn) {
+        backToQuizBtn.addEventListener('click', function() {
+            emailSection.style.display = 'none';
+            quizForm.style.display = 'block';
+        });
+    }
+
+    if (submitQuizBtn) {
+        submitQuizBtn.addEventListener('click', submitQuiz);
+    }
+
+    if (tryAgainBtn) {
+        tryAgainBtn.addEventListener('click', function() {
+            currentQuestionIndex = 0;
+            userAnswers = Array(questions.length).fill(null);
+            score = 0;
+            gmailInput.value = '';
+            scoreResult.style.display = 'none';
+            quizIntro.style.display = 'block';
+            progressBar.style.width = '0%';
+            progressText.textContent = '1/12';
+            console.log("Quiz reset"); // Debug log
+        });
+    }
+
+    // Initial state check
+    console.log("Quiz initialized successfully"); // Debug log
+});
