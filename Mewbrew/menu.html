@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu | MewBrew Café</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <!-- Updated Logo -->
+        <img src="https://n4sshh.github.io/Nasshh/mewbrew/mewbrew.png" alt="MewBrew Café Logo" class="logo-img" height="40">
+      </a>
+      
+      <!-- Cart Icon -->
+      <div class="cart-icon" onclick="toggleCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+      </div>
+      
+      <!-- Mobile Toggle -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="menu.html"><i class="fas fa-coffee"></i> Menu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cats.html"><i class="fas fa-paw"></i> Cats</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="booking.html"><i class="fas fa-calendar-alt"></i> Booking</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="events.html"><i class="fas fa-gamepad"></i> Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="shop.html"><i class="fas fa-shopping-bag"></i> Shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Cart Overlay -->
+  <div class="cart-overlay" onclick="toggleCart()"></div>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h3 class="mb-0">Your Order</h3>
+      <button class="btn btn-sm btn-outline-secondary" onclick="toggleCart()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div id="cart-items">
+      <!-- Cart items will be dynamically added here -->
+      <div class="empty-cart">
+        <i class="fas fa-shopping-cart"></i>
+        <p>Your cart is empty</p>
+        <p>Add some delicious items from our menu!</p>
+      </div>
+    </div>
+    
+    <div id="cart-summary" style="display: none;">
+      <div class="d-flex justify-content-between mb-2">
+        <span>Subtotal:</span>
+        <span id="subtotal">₱0</span>
+      </div>
+      <div class="d-flex justify-content-between mb-3">
+        <span>Service Fee (5%):</span>
+        <span id="service-fee">₱0</span>
+      </div>
+      <div class="d-flex justify-content-between cart-total mb-3">
+        <span>Total:</span>
+        <span id="total">₱0</span>
+      </div>
+      
+      <button class="checkout-btn" onclick="showCheckoutModal()">
+        <i class="fas fa-paper-plane me-2"></i>Proceed to Checkout
+      </button>
+    </div>
+  </div>
+
+  <!-- Page Header -->
+  <header class="page-header py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h1 class="display-4 fw-bold mb-3">MewBrew Menu</h1>
+          <p class="lead mb-0">Handcrafted with love, served with purrs</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu Categories -->
+  <main class="menu-container">
+    <div class="container">
+      <!-- Search and Filters will be added by JavaScript -->
+      
+      <!-- Coffee & Espresso -->
+      <section class="menu-category mb-5">
+        <div class="category-header mb-4">
+          <div class="icon-wrapper">
+            <i class="fas fa-coffee"></i>
+          </div>
+          <h2 class="category-title">Coffee & Espresso</h2>
+        </div>
+        <div class="row g-4">
+          <!-- Menu Item 1 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="menu-item card h-100 border-0 shadow-sm">
+              <img src="images/menu/espresso.jpg" class="menu-item-img card-img-top" alt="Espresso">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h3 class="card-title h5 mb-0">Espresso</h3>
+                  <span class="badge bg-warning price-badge">₱100</span>
+                </div>
+                <p class="card-text">Strong, rich coffee served in a small cup</p>
+                <div class="mt-3">
+                  <span class="badge bg-light text-dark me-1">Hot</span>
+                  <span class="badge bg-light text-dark">Strong</span>
+                </div>
+                <button class="btn order-btn w-100 mt-3" onclick="addToCart('Espresso', 100)">
+                  <i class="fas fa-plus me-2"></i>Add to Order
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Menu Item 2 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="menu-item card h-100 border-0 shadow-sm">
+              <img src="images/menu/cappuccino.jpg" class="menu-item-img card-img-top" alt="Cappuccino">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h3 class="card-title h5 mb-0">Cappuccino</h3>
+                  <span class="badge bg-warning price-badge">₱130</span>
+                </div>
+                <p class="card-text">Equal parts espresso, steamed milk, and milk foam</p>
+                <div class="mt-3">
+                  <span class="badge bg-light text-dark me-1">Foamy</span>
+                  <span class="badge bg-light text-dark">Classic</span>
+                </div>
+                <button class="btn order-btn w-100 mt-3" onclick="addToCart('Cappuccino', 130)">
+                  <i class="fas fa-plus me-2"></i>Add to Order
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Menu Item 3 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="menu-item card h-100 border-0 shadow-sm">
+              <img src="images/menu/latte.jpg" class="menu-item-img card-img-top" alt="Latte">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h3 class="card-title h5 mb-0">Latte</h3>
+                  <span class="badge bg-warning price-badge">₱140</span>
+                </div>
+                <p class="card-text">Espresso with steamed milk and a light foam layer</p>
+                <div class="mt-3">
+                  <span class="badge bg-light text-dark me-1">Creamy</span>
+                  <span class="badge bg-light text-dark">Mild</span>
+                </div>
+                <button class="btn order-btn w-100 mt-3" onclick="addToCart('Latte', 140)">
+                  <i class="fas fa-plus me-2"></i>Add to Order
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Menu Item 4 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="menu-item card h-100 border-0 shadow-sm">
+              <img src="images/menu/mocha.jpg" class="menu-item-img card-img-top" alt="Mocha">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h3 class="card-title h5 mb-0">Mocha</h3>
+                  <span class="badge bg-warning price-badge">₱150</span>
+                </div>
+                <p class="card-text">Chocolate-infused espresso with steamed milk</p>
+                <div class="mt-3">
+                  <span class="badge bg-light text-dark me-1">Chocolate</span>
+                  <span class="badge bg-light text-dark">Sweet</span>
+                </div>
+                <button class="btn order-btn w-100 mt-3" onclick="addToCart('Mocha', 150)">
+                  <i class="fas fa-plus me-2"></i>Add to Order
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pastries & Desserts -->
+      <section class="menu-category mb-5">
+        <div class="category-header mb-4">
+          <div class="icon-wrapper">
+            <i class="fas fa-cookie-bite"></i>
+          </div>
+          <h2 class="category-title">Pastries & Desserts</h2>
+        </div>
+        <div class="row g-4">
+          <!-- Menu Item 1 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="menu-item card h-100 border-0 shadow-sm">
+              <img src="images/menu/croissant.jpg" class="menu-item-img card-img-top" alt="Croissant">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h3 class="card-title h5 mb-0">Croissant</h3>
+                  <span class="badge bg-warning price-badge">₱80</span>
+                </div>
+                <p class="card-text">Buttery, flaky pastry made with layered dough</p>
+                <div class="mt-3">
+                  <span class="badge bg-light text-dark me-1">Buttery</span>
+                  <span class="badge bg-light text-dark">Fresh</span>
+                </div>
+                <button class="btn order-btn w-100 mt-3" onclick="addToCart('Croissant', 80)">
+                  <i class="fas fa-plus me-2"></i>Add to Order
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Menu Item 2 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="menu-item card h-100 border-0 shadow-sm">
+              <img src="images/menu/chocolate-muffin.jpg" class="menu-item-img card-img-top" alt="Chocolate Muffin">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h3 class="card-title h5 mb-0">Chocolate Muffin</h3>
+                  <span class="badge bg-warning price-badge">₱90</span>
+                </div>
+                <p class="card-text">Rich chocolate muffin with chocolate chips</p>
+                <div class="mt-3">
+                  <span class="badge bg-light text-dark me-1">Chocolate</span>
+                  <span class="badge bg-light text-dark">Moist</span>
+                </div>
+                <button class="btn order-btn w-100 mt-3" onclick="addToCart('Chocolate Muffin', 90)">
+                  <i class="fas fa-plus me-2"></i>Add to Order
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Menu Item 3 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="menu-item card h-100 border-0 shadow-sm">
+              <img src="images/menu/blueberry-scone.jpg" class="menu-item-img card-img-top" alt="Blueberry Scone">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h3 class="card-title h5 mb-0">Blueberry Scone</h3>
+                  <span class="badge bg-warning price-badge">₱85</span>
+                </div>
+                <p class="card-text">Freshly baked scone with blueberries</p>
+                <div class="mt-3">
+                  <span class="badge bg-light text-dark me-1">Fruity</span>
+                  <span class="badge bg-light text-dark">Crumbly</span>
+                </div>
+                <button class="btn order-btn w-100 mt-3" onclick="addToCart('Blueberry Scone', 85)">
+                  <i class="fas fa-plus me-2"></i>Add to Order
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Menu Item 4 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="menu-item card h-100 border-0 shadow-sm">
+              <img src="images/menu/cat-cookie.jpg" class="menu-item-img card-img-top" alt="Cat-shaped Cookie">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h3 class="card-title h5 mb-0">Cat-shaped Cookie</h3>
+                  <span class="badge bg-warning price-badge">₱60</span>
+                </div>
+                <p class="card-text">Adorable vanilla cookie in the shape of a cat</p>
+                <div class="mt-3">
+                  <span class="badge bg-light text-dark me-1">Cute</span>
+                  <span class="badge bg-light text-dark">Vanilla</span>
+                </div>
+                <button class="btn order-btn w-100 mt-3" onclick="addToCart('Cat-shaped Cookie', 60)">
+                  <i class="fas fa-plus me-2"></i>Add to Order
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Non-Coffee Drinks -->
+      <section class="menu-category">
+        <div class="category-header mb-4">
+          <div class="icon-wrapper">
+            <i class="fas fa-glass-whiskey"></i>
+          </div>
+          <h2 class="category-title">Non-Coffee Drinks</h2>
+        </div>
+        <div class="row g-4">
+          <!-- Menu Item 1 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="menu-item card h-100 border-0 shadow-sm">
+              <img src="images/menu/fruit-tea.jpg" class="menu-item-img card-img-top" alt="Fruit Tea">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h3 class="card-title h5 mb-0">Fruit Tea</h3>
+                  <span class="badge bg-warning price-badge">₱110</span>
+                </div>
+                <p class="card-text">Refreshing tea with natural fruit flavors</p>
+                <div class="mt-3">
+                  <span class="badge bg-light text-dark me-1">Fruity</span>
+                  <span class="badge bg-light text-dark">Refreshing</span>
+                </div>
+                <button class="btn order-btn w-100 mt-3" onclick="addToCart('Fruit Tea', 110)">
+                  <i class="fas fa-plus me-2"></i>Add to Order
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Menu Item 2 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="menu-item card h-100 border-0 shadow-sm">
+              <img src="images/menu/hot-chocolate.jpg" class="menu-item-img card-img-top" alt="Hot Chocolate">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h3 class="card-title h5 mb-0">Hot Chocolate</h3>
+                  <span class="badge bg-warning price-badge">₱120</span>
+                </div>
+                <p class="card-text">Rich, creamy chocolate drink with whipped cream</p>
+                <div class="mt-3">
+                  <span class="badge bg-light text-dark me-1">Creamy</span>
+                  <span class="badge bg-light text-dark">Chocolate</span>
+                </div>
+                <button class="btn order-btn w-100 mt-3" onclick="addToCart('Hot Chocolate', 120)">
+                  <i class="fas fa-plus me-2"></i>Add to Order
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Menu Item 3 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="menu-item card h-100 border-0 shadow-sm">
+              <img src="images/menu/lemonade.jpg" class="menu-item-img card-img-top" alt="Iced Lemonade">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h3 class="card-title h5 mb-0">Iced Lemonade</h3>
+                  <span class="badge bg-warning price-badge">₱95</span>
+                </div>
+                <p class="card-text">Freshly squeezed lemonade with mint</p>
+                <div class="mt-3">
+                  <span class="badge bg-light text-dark me-1">Refreshing</span>
+                  <span class="badge bg-light text-dark">Cold</span>
+                </div>
+                <button class="btn order-btn w-100 mt-3" onclick="addToCart('Iced Lemonade', 95)">
+                  <i class="fas fa-plus me-2"></i>Add to Order
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Menu Item 4 -->
+          <div class="col-md-6 col-lg-3">
+            <div class="menu-item card h-100 border-0 shadow-sm">
+              <img src="images/menu/matcha-latte.jpg" class="menu-item-img card-img-top" alt="Matcha Latte">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h3 class="card-title h5 mb-0">Matcha Latte</h3>
+                  <span class="badge bg-warning price-badge">₱135</span>
+                </div>
+                <p class="card-text">Japanese green tea with steamed milk</p>
+                <div class="mt-3">
+                  <span class="badge bg-light text-dark me-1">Green Tea</span>
+                  <span class="badge bg-light text-dark">Healthy</span>
+                </div>
+                <button class="btn order-btn w-100 mt-3" onclick="addToCart('Matcha Latte', 135)">
+                  <i class="fas fa-plus me-2"></i>Add to Order
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Special Note -->
+  <section class="special-note py-5">
+    <div class="container">
+      <div class="alert alert-info border-0 shadow-sm" role="alert">
+        <div class="d-flex align-items-center">
+          <i class="fas fa-info-circle fa-2x me-3"></i>
+          <div>
+            <h4 class="alert-heading mb-2">Allergy Information</h4>
+            <p class="mb-0"><strong>Important:</strong> Please inform our staff of any food allergies. We offer gluten-free and dairy-free options upon request. All items may contain traces of nuts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Checkout Modal -->
+  <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="checkoutModalLabel">Complete Your Order</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="orderForm">
+            <div class="row">
+              <div class="col-md-6">
+                <h5>Contact Information</h5>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Full Name *</label>
+                  <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email *</label>
+                  <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="mb-3">
+                  <label for="phone" class="form-label">Phone Number *</label>
+                  <input type="tel" class="form-control" id="phone" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h5>Order Details</h5>
+                <div class="mb-3">
+                  <label for="orderType" class="form-label">Order Type</label>
+                  <select class="form-select" id="orderType">
+                    <option value="dine-in">Dine In</option>
+                    <option value="takeaway">Takeaway</option>
+                    <option value="delivery">Delivery</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="specialInstructions" class="form-label">Special Instructions</label>
+                  <textarea class="form-control" id="specialInstructions" rows="3" placeholder="Any special requests or allergies..."></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="preferredTime" class="form-label">Preferred Time</label>
+                  <input type="datetime-local" class="form-control" id="preferredTime">
+                </div>
+              </div>
+            </div>
+            
+            <div class="order-summary mt-4 p-3 bg-light rounded">
+              <h5>Order Summary</h5>
+              <div id="modal-cart-items"></div>
+              <div class="d-flex justify-content-between mt-3">
+                <strong>Total:</strong>
+                <strong id="modal-total">₱0</strong>
+              </div>
+            </div>
+            
+            <div class="mt-4">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="terms" required>
+                <label class="form-check-label" for="terms">
+                  I agree to the terms and conditions
+                </label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-warning" onclick="submitOrder()">Submit Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="pt-5">
+    <div class="container">
+      <div class="row">
+        <!-- Brand Info -->
+        <div class="col-md-4 mb-4">
+          <div class="footer-section">
+            <img src="https://n4sshh.github.io/Nasshh/mewbrew/mewbrew.png" alt="MewBrew Café" class="mb-3" style="max-width: 180px;">
+            <p>123 Cat Street, Iloilo City</p>
+            <p>Open Daily: 10:00 AM – 9:00 PM</p>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div class="col-md-4 mb-4">
+          <div class="footer-section">
+            <h4 class="mb-3">Quick Links</h4>
+            <ul class="list-unstyled">
+              <li><a href="index.html" class="text-decoration-none">Home</a></li>
+              <li><a href="menu.html" class="text-decoration-none">Menu</a></li>
+              <li><a href="cats.html" class="text-decoration-none">Our Cats</a></li>
+              <li><a href="booking.html" class="text-decoration-none">Booking</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Connect -->
+        <div class="col-md-4 mb-4">
+          <div class="footer-section">
+            <h4 class="mb-3">Connect With Us</h4>
+            <div class="social-links d-flex gap-3 mb-3">
+              <a href="#" class="text-decoration-none" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" class="text-decoration-none" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="text-decoration-none" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>contact@mewbrew.com</p>
+            <p>(033) 123-4567</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom text-center pt-4 mt-4 border-top">
+        <p class="mb-0">© 2026 MewBrew Café. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
