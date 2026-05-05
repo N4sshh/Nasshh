@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lab 3 - Student Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+    <h1>Student Registration</h1>
+    <p class="subtitle">Please fill out all fields to register.</p>
+
+    <form id="reg-form" novalidate>
+
+        <!-- Full Name -->
+        <div class="form-group" id="group-name">
+            <label for="full-name">Full Name <span class="req">*</span></label>
+            <input type="text" id="full-name" placeholder="e.g. Maria Santos">
+            <span class="error-msg" id="name-error"></span>
+            <span class="success-icon" id="name-ok">✓</span>
+        </div>
+
+        <!-- Student ID -->
+        <div class="form-group" id="group-sid">
+            <label for="student-id">Student ID <span class="req">*</span></label>
+            <input type="text" id="student-id" placeholder="e.g. 22-01234">
+            <span class="hint">Format: YY-NNNNN (e.g. 22-01234)</span>
+            <span class="error-msg" id="sid-error"></span>
+            <span class="success-icon" id="sid-ok">✓</span>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group" id="group-email">
+            <label for="email">Email Address <span class="req">*</span></label>
+            <input type="text" id="email" placeholder="e.g. maria@email.com">
+            <span class="error-msg" id="email-error"></span>
+            <span class="success-icon" id="email-ok">✓</span>
+        </div>
+
+        <!-- Course -->
+        <div class="form-group" id="group-course">
+            <label for="course">Course / Program <span class="req">*</span></label>
+            <select id="course">
+                <option value="">-- Select your course --</option>
+                <option value="BSIT">BS Information Technology</option>
+                <option value="BSCS">BS Computer Science</option>
+                <option value="BSIS">BS Information Systems</option>
+                <option value="BSEMC">BS Entertainment and Multimedia Computing</option>
+            </select>
+            <span class="error-msg" id="course-error"></span>
+            <span class="success-icon" id="course-ok">✓</span>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group" id="group-pw">
+            <label for="password">Password <span class="req">*</span></label>
+            <input type="password" id="password" placeholder="Minimum 8 characters">
+            <div id="pw-strength-bar">
+                <div id="pw-strength-fill"></div>
+            </div>
+            <span id="pw-strength-label"></span>
+            <span class="error-msg" id="pw-error"></span>
+            <span class="success-icon" id="pw-ok">✓</span>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group" id="group-cpw">
+            <label for="confirm-pw">Confirm Password <span class="req">*</span></label>
+            <input type="password" id="confirm-pw" placeholder="Re-enter your password">
+            <span class="error-msg" id="cpw-error"></span>
+            <span class="success-icon" id="cpw-ok">✓</span>
+        </div>
+
+        <!-- Terms -->
+        <div class="form-group checkbox-group" id="group-terms">
+            <label class="checkbox-label">
+                <input type="checkbox" id="terms">
+                I agree to the <a href="#">Terms and Conditions</a>
+            </label>
+            <span class="error-msg" id="terms-error"></span>
+        </div>
+
+        <!-- Buttons -->
+        <div class="btn-row">
+            <button type="submit" id="btn-submit">Register</button>
+            <button type="button" id="btn-reset">Clear Form</button>
+        </div>
+
+    </form>
+
+    <div id="success-card" style="display: none;">
+        <h2>✓ Registration Successful!</h2>
+        <p>Here is the information you submitted:</p>
+        <table id="summary-table">
+            <tr><td>Full Name</td><td id="s-name"></td></tr>
+            <tr><td>Student ID</td><td id="s-sid"></td></tr>
+            <tr><td>Email</td><td id="s-email"></td></tr>
+            <tr><td>Course</td><td id="s-course"></td></tr>
+        </table>
+        <button id="btn-new">Register Another Student</button>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
